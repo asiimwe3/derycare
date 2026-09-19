@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "functions": {
+    "api/**/*.js": {
+      "memory": 256
+    }
+  }
+}

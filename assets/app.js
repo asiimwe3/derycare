@@ -431,7 +431,7 @@ function renderCart(){
         <button class="btn btn-wa btn-block" onclick="waCheckout()">💬 Quick Order via WhatsApp</button>
         <a class="btn btn-outline btn-block" href="shop.html">Continue Shopping</a>
       </div>
-      <p class="small mt16 center">Secure online payments (Pesapal) coming soon. Orders are confirmed on WhatsApp.</p>
+      <p class="small mt16 center">Pay online with MTN MoMo, Airtel Money or card at checkout — or order via WhatsApp.</p>
     </div>
   </div>
   ${saved.length ? `
@@ -445,7 +445,17 @@ function renderCart(){
 }
 
 /* ── Checkout ── */
-let ckStep = 1, ckDelivery = "standard";
+let ckStep = 1, ckDelivery = "standard", ckPay = "online";
+let apiBaseCache = null;
+async function apiBase(){
+  if(apiBaseCache !== null) return apiBaseCache;
+  try{
+    const r = await fetch("api/health");
+    if(r.ok){ const j = await r.json(); if(j && j.ok){ apiBaseCache = ""; return ""; } }
+  }catch(e){}
+  apiBaseCache = "https://derycare.vercel.app"; /* updated to the real Vercel URL after deploy */
+  return apiBaseCache;
+}
 const DELIVERY_FEES = { standard: 5000, express: 12000, pickup: 0 }; /* TODO: confirm real fees with DeryCare */
 const DISTRICTS = ["Kyenjojo","Fort Portal","Kasese","Hoima","Kibaale","Kagadi","Bundibugyo","Mbarara","Kabale","Kabarole","Kamwenge","Kyegegwa","Ibanda","Bushenyi","Ntoroko","Kampala","Entebbe","Jinja","Gulu","Mbale","Other"];
 function ckFee(){ return DELIVERY_FEES[ckDelivery] || 0; }
@@ -488,17 +498,19 @@ function renderCheckout(){
       ${ckStep === 3 ? `
       <div class="form">
         <h3>Payment</h3>
-        <label class="pay-opt" style="opacity:.6">
-          <input type="radio" disabled>
-          <span><b>Pay Online (Mobile Money / Card)<span class="pay-soon">Coming soon</span></b><br>
-          <span class="small">Secure payment powered by Pesapal — mobile money and card options. Launching soon; ask us on WhatsApp to be notified.</span></span>
+        <label class="pay-opt ${ckPay==='online'?'on':''}" onclick="ckPay='online';renderCheckout()">
+          <input type="radio" name="pay" ${ckPay==='online'?'checked':''}>
+          <span><b>Pay Online (Mobile Money / Card)<span class="pay-tag">Active</span></b><br>
+          <span class="small">Secure payment powered by Pesapal — MTN MoMo, Airtel Money, Visa/Mastercard. Instant receipt on your phone.</span></span>
         </label>
-        <label class="pay-opt on">
-          <input type="radio" checked>
-          <span><b>Order via WhatsApp<span class="pay-tag">Active</span></b><br>
+        <label class="pay-opt ${ckPay==='wa'?'on':''}" onclick="ckPay='wa';renderCheckout()">
+          <input type="radio" name="pay" ${ckPay==='wa'?'checked':''}>
+          <span><b>Order via WhatsApp</b><br>
           <span class="small">Your order is sent to DeryCare with a unique order number. We confirm price, delivery and payment (cash on delivery, mobile money) on WhatsApp.</span></span>
         </label>
-        <button class="btn btn-green btn-block" onclick="ckPlace()">💬 Place Order via WhatsApp</button>
+        ${ckPay === "online"
+          ? `<button class="btn btn-green btn-block" onclick="ckPayOnline()">💳 Pay with Mobile Money / Card</button>`
+          : `<button class="btn btn-green btn-block" onclick="ckPlace()">💬 Place Order via WhatsApp</button>`}
         <p class="small center">By placing your order you agree to our <a href="terms.html">Terms</a>.</p>
       </div>` : ""}
     </div>
@@ -544,4 +556,45 @@ function ckPlace(){
   waMsg(m);
   cart = []; persist();
   location.href = "account.html?order=" + num;
+}
+async function ckPayOnline(){
+  const btn = document.querySelector("#ckForm .btn-green"); if(btn){ btn.disabled = true; btn.textContent = "Opening secure payment…"; }
+  const num = newOrderNumber();
+  const order = {
+    number: num, date: new Date().toISOString(), status: "Pending Payment", method: "pesapal",
+    name: $("ckName")?.value || "", items: cart.map(l => ({ ...l })), subtotal: cartTotal(), delivery: ckDelivery, fee: ckFee(), total: cartTotal() + ckFee()
+  };
+  orders.unshift(order); persist();
+  const ok = await sbInsert("orders", {
+    order_no: num,
+    customer_name: ($("ckName")?.value || "").trim(),
+    phone: ($("ckPhone")?.value || "").trim(),
+    email: ($("ckEmail")?.value || "").trim() || null,
+    address: (($("ckAddr")?.value || "") + ", " + ($("ckTown")?.value || "") + " — " + ($("ckDistrict")?.value || "")).trim(),
+    zone: ($("ckDistrict")?.value || ($("ckTown")?.value || "")).trim() || null,
+    notes: ($("ckNotes")?.value || "").trim() || null,
+    items: cart.map(l => ({ product: getP(l.id)?.name, size: l.size, qty: l.qty, unit_price: linePrice(l) })),
+    subtotal: cartTotal(),
+    delivery_fee: ckFee(),
+    total: order.total,
+    status: "pending_payment",
+    source: "website"
+  });
+  if(!ok){ toast("Cannot reach our system right now — order via WhatsApp instead"); ckPay = "wa"; renderCheckout(); return; }
+  try{
+    const base = await apiBase();
+    const r = await fetch(base + "/api/pesapal-init", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ order_no: num, return_url: location.origin + location.pathname.replace(/[^/]*$/, "") + "payment-result.html" })
+    });
+    const d = await r.json();
+    if(!r.ok || !d.redirect_url) throw new Error(d.error || "gateway unavailable");
+    cart = []; persist();
+    location.href = d.redirect_url;
+  }catch(e){
+    console.warn("Pesapal init failed:", e);
+    toast("Online payment unavailable — place the order via WhatsApp");
+    ckPay = "wa"; renderCheckout();
+  }
 }

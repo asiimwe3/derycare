@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Status — DeryCare</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="assets/img/brand/logo.png">
+</head>
+<body>
+<section class="section" style="padding-top:10px">
+  <div class="wrap narrow center">
+    <div id="payCard" class="card" style="max-width:520px;margin:0 auto;padding:32px">
+      <div style="font-size:48px" id="payIco">⏳</div>
+      <h2 id="payTitle" style="margin:12px 0 6px">Checking your payment…</h2>
+      <p class="lead" id="payMsg">Please wait while we confirm your payment with the gateway.</p>
+      <div id="payActions" style="display:none;gap:10px;margin-top:18px">
+        <a class="btn btn-primary btn-block" href="shop.html">Continue Shopping</a>
+        <button class="btn btn-green btn-block" onclick="confirmOnWa()">💬 Confirm on WhatsApp</button>
+      </div>
+      <p class="small mt16" style="opacity:.6">Reference: <span id="payRef"></span></p>
+    </div>
+  </div>
+</section>
+<script src="assets/app.js"></script>
+<script>
+  chrome("shop.html");
+
+  const qs = new URLSearchParams(location.search);
+  const trackingId = qs.get("OrderTrackingId") || qs.get("orderTrackingId");
+  const merchantRef = qs.get("OrderMerchantReference") || qs.get("order_no") || "";
+  $("payRef").textContent = merchantRef || trackingId || "—";
+  let tries = 0, apiBaseCache = null;
+
+  async function apiBase(){
+    if(apiBaseCache !== null) return apiBaseCache;
+    try { const r = await fetch("api/health"); if(r.ok){ const j = await r.json(); if(j && j.ok){ apiBaseCache = ""; return ""; } } } catch(e){}
+    apiBaseCache = "https://derycare.vercel.app";
+    return apiBaseCache;
+  }
+
+  async function check(){
+    if(!trackingId){ fail("We could not find this payment reference."); return; }
+    tries++;
+    try{
+      const base = await apiBase();
+      const r = await fetch(base + "/api/pesapal-status?orderTrackingId=" + encodeURIComponent(trackingId) + "&order_no=" + encodeURIComponent(merchantRef));
+      const d = await r.json();
+      if(d.status === "paid"){ success(d); return; }
+      if(d.status === "pending" && tries < 5){ setTimeout(check, 3000); return; }
+      if(d.status === "pending"){ fail("Your payment is still processing. If you completed it, we will confirm shortly."); return; }
+      fail(d.description || "The payment did not go through. No money has been taken.");
+    }catch(e){
+      if(tries < 3){ setTimeout(check, 3000); } else { fail("We could not reach the payment gateway. If you paid, send us the reference on WhatsApp."); }
+    }
+  }
+  function success(d){
+    $("payIco").textContent = "✅";
+    $("payTitle").textContent = "Payment received!";
+    $("payMsg").innerHTML = `Thank you! Your order <b>${d.order_no || merchantRef}</b> is confirmed and will be processed right away.` +
+      (d.confirmation_code ? `<br><span class="small">Receipt: ${d.confirmation_code}${d.payment_method ? " · " + d.payment_method : ""}</span>` : "");
+    $("payActions").style.display = "grid";
+  }
+  function fail(msg){
+    $("payIco").textContent = "⚠️";
+    $("payTitle").textContent = "Payment not completed";
+    $("payMsg").innerHTML = msg;
+    $("payActions").style.display = "grid";
+  }
+  function confirmOnWa(){
+    waMsg("Hello DeryCare! I have completed payment for order " + ($("payRef").textContent) + ". Please confirm receipt.");
+  }
+  setTimeout(check, 800);
+</script>
+</body>
+</html>
