@@ -2,15 +2,16 @@
 const WA = "256762306675";
 const UGX = n => "UGX " + n.toLocaleString("en-UG");
 
+/* Real DeryCare product line (from official catalogue). */
 const PRODUCTS = [
-  { id:"msc",     name:"Multi-Surface Cleaner", benefit:"Everyday cleaning for multiple surfaces", emoji:"🧴", need:["home","kitchen","business"], sizes:[["500ml",5000],["1L",8000],["5L",30000]] },
-  { id:"dish",    name:"Dishwashing Liquid",    benefit:"Cuts grease, gentle on hands",           emoji:"🍋", need:["kitchen","home"],        sizes:[["500ml",6000],["1L",10000],["5L",35000]] },
-  { id:"laundry", name:"Laundry Detergent",      benefit:"Deep-clean, bright clothes",            emoji:"👕", need:["clothes","laundry"],     sizes:[["1kg",7000],["3kg",18000],["10kg",52000]] },
-  { id:"toilet",  name:"Toilet Cleaner",        benefit:"Kills germs, removes stains",            emoji:"🚽", need:["bathroom","home"],      sizes:[["500ml",6000],["1L",9000]] },
-  { id:"bleach",  name:"Bleach & Disinfectant", benefit:"Whitens, disinfects, deodorises",        emoji:"🧪", need:["bathroom","kitchen","business"], sizes:[["1L",5500],["5L",22000]] },
-  { id:"handwash",name:"Hand Wash",            benefit:"Soft, fragrant, germ protection",        emoji:"🧼", need:["home","business","institution"], sizes:[["250ml",3500],["500ml",6000],["5L",28000]] },
-  { id:"floor",   name:"Floor Shine",          benefit:"Gleaming floors, fresh scent",           emoji:"✨", need:["home","institution","business"], sizes:[["1L",7500],["5L",32000]] },
-  { id:"shoe",    name:"Shoe Cleaner & Polish", benefit:"Clean, polish, protect",                 emoji:"👟", need:["shoes"],                 sizes:[["Kit",12000]] }
+  { id:"msc",     name:"Multi-Surface Cleaner", benefit:"Cleans · Shines · Freshens — for a cleaner, healthier home", img:"multi-surface.png", color:"#3fae5a", need:["home","kitchen","business","institution"], sizes:[["500ml",5000],["1L",8000],["5L",30000],["20L",95000]] },
+  { id:"floor",   name:"Floor Cleaner",         benefit:"Deep clean, fresh fragrance",                                img:"floor.png",         color:"#1b6fd6", need:["home","institution","business"],           sizes:[["500ml",5500],["1L",8500],["5L",31000],["20L",98000]] },
+  { id:"glass",   name:"Glass Cleaner",         benefit:"Streak-free, crystal clear shine",                          img:"glass.png",         color:"#3fb6d6", need:["home","business"],                          sizes:[["500ml",5000],["1L",8000]] },
+  { id:"toilet",  name:"Toilet Cleaner",        benefit:"Removes stains · Kills germs · Long-lasting freshness",     img:"toilet.png",        color:"#7a3fc9", need:["bathroom","home","business","institution"], sizes:[["500ml",6000],["1L",9500],["5L",33000],["20L",99000]] },
+  { id:"dish",    name:"Dishwashing Liquid",    benefit:"Powerful grease removal, lemon fresh",                      img:"dishwash.png",      color:"#eab308", need:["kitchen","home","business"],                sizes:[["500ml",6000],["1L",10000],["5L",35000],["20L",105000]] },
+  { id:"handwash",name:"Hand Wash",             benefit:"Gentle on skin · Kills germs · Soft & fresh",               img:"handwash.png",      color:"#e0559b", need:["home","business","institution","bathroom"], sizes:[["500ml",6000],["1L",9500],["5L",32000],["20L",96000]] },
+  { id:"shoe",    name:"Shoe Polish",           benefit:"Restores · Protects · Shines",                              img:"shoe-polish.png",   color:"#22252a", need:["shoes"],                                    sizes:[["75ml",6000],["100ml",8000]] },
+  { id:"laundry", name:"Laundry Detergent",     benefit:"Bright clothes, ocean-fresh scent",                         img:"laundry.png",       color:"#2f6fd0", need:["clothes","laundry","institution"],          sizes:[["1L",7500],["5L",30000],["20L",99000]] }
 ];
 
 const NEEDS = [
@@ -23,6 +24,12 @@ const NEEDS = [
   { id:"business", label:"My Business" },
   { id:"institution", label:"My Institution" }
 ];
+
+function hexA(hex, a){
+  const h = hex.replace("#","");
+  const r = parseInt(h.substring(0,2),16), g = parseInt(h.substring(2,4),16), b = parseInt(h.substring(4,6),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
 
 /* ── Cart ── */
 const cart = JSON.parse(localStorage.getItem("derycart") || "[]");
@@ -72,7 +79,7 @@ function chrome(active){
   document.body.insertAdjacentHTML("afterbegin", `
   <header><div class="wrap">
     <nav class="nav">
-      <a class="brand" href="index.html"><span class="drop">💧</span>Dery<span style="color:var(--teal)">Care</span></a>
+      <a class="brand" href="index.html"><img src="assets/img/brand/mark.png" alt="DeryCare" style="height:36px;width:auto"></a>
       <div class="nav-links">${links}</div>
       <div class="nav-cta">
         <a class="btn btn-outline cart-btn" href="cart.html">🛒 <span class="cart-count">0</span></a>
@@ -103,13 +110,13 @@ function toast(msg){
 function pCard(p, sizeIdx = 0){
   const [size, price] = p.sizes[sizeIdx];
   return `<div class="p-card">
-    <div class="p-img">${p.emoji}</div>
+    <div class="p-img" style="background:${hexA(p.color,.10)}"><img src="assets/img/products/${p.img}" alt="${p.name}" style="height:150px;width:auto;object-fit:contain"></div>
     <div class="p-body">
       <div class="p-name">${p.name}</div>
       <div class="p-benefit">${p.benefit}</div>
       <div class="p-size">${p.sizes.map(s=>s[0]).join(" · ")}</div>
       <div class="p-price">${UGX(price)} <small>/ ${size}</small></div>
-      <button class="p-add" onclick="addToCart('${p.id}',${sizeIdx})">Add to Cart</button>
+      <button class="p-add" style="background:${p.color}" onclick="addToCart('${p.id}',${sizeIdx})">Add to Cart</button>
     </div></div>`;
 }
 
