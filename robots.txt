@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://asiimwe3.github.io/derycare/sitemap.xml

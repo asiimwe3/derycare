@@ -161,6 +161,7 @@ function waCheckout(){
 function waOrderSupport(){ waMsg(`Hello DeryCare! I need support with my order (order number: …).`); }
 function waBulk(){ waMsg("Hello DeryCare! I would like a bulk / wholesale quote. Products and quantities:"); }
 function waBooking(service){ waMsg(`Hello DeryCare! I would like to book ${service || "a cleaning service"}.\n\nName:\nLocation:\nPreferred date:`); }
+function waJobApply(role){ waMsg(`Hello DeryCare! I would like to apply for the ${role} position.\n\nName:\nLocation:\nExperience:`); }
 
 /* ── Floating WhatsApp: context-aware message ── */
 function waFloatMsg(){
@@ -176,14 +177,14 @@ function waFloatMsg(){
 /* ── Shared chrome: announcement, nav, bottom bar, float, toast ── */
 const NAV = [
   ["index.html","Home"],["shop.html","Shop"],["services.html","Services"],
-  ["business.html","Business"],["about.html","About"],["contact.html","Contact"]
+  ["business.html","Business"],["jobs.html","Careers"],["about.html","About"],["contact.html","Contact"]
 ];
 function chrome(active){
   const links = NAV.map(([href,label]) => `<a href="${href}" class="${href===active?'active':''}">${label}</a>`).join("");
   const mlinks = NAV.map(([href,label]) => `<a href="${href}">${label}</a>`).join("") +
     `<a href="account.html">Account</a><a href="cart.html">Cart</a>`;
   document.body.insertAdjacentHTML("afterbegin", `
-  <div id="announce">🚚 <b>Cleaning products delivered across Uganda</b> &nbsp;|&nbsp; 🧹 <b>Professional cleaning across Western Uganda</b></div>
+  <div id="announce">🚚 <b>Products delivered across Uganda</b> &nbsp;|&nbsp; 🧹 <b>Cleaning across Western Uganda</b> &nbsp;|&nbsp; 💼 <b>We're hiring — <a href="jobs.html" style="color:#fff;text-decoration:underline">apply on WhatsApp</a></b></div>
   <header><div class="wrap">
     <nav class="nav">
       <a class="brand" href="index.html"><img src="assets/img/brand/logo.png" alt="DeryCare — Clean Living. Made Simple."></a>
