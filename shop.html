@@ -3,39 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop Products — DeryCare</title>
-<meta name="description" content="DeryCare cleaning products — shop by what you need to clean.">
+<title>DeryCare Shop — Quality Cleaning Products Delivered Across Uganda</title>
+<meta name="description" content="Shop DeryCare cleaning products — laundry, dishwashing, floor, toilet, hand hygiene, shoe care and bulk sizes. Delivered across Uganda.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<section class="hero" style="background:var(--teal-soft)">
-  <div class="wrap center" style="padding:48px 0">
-    <span class="eyebrow">Shop</span>
-    <h1>Shop by Need</h1>
-    <p class="lead">Don't know which product you need? Just pick what you're cleaning — we'll do the rest.</p>
+
+<div class="page-head">
+  <div class="wrap">
+    <h1>DeryCare Shop</h1>
+    <p class="lead">Quality cleaning products with clear prices in UGX — delivered across Uganda.</p>
   </div>
-</section>
+</div>
 
 <section>
   <div class="wrap">
-    <div class="chips" id="needChips"></div>
-    <div class="grid g3 mt32" id="shopGrid"></div>
+    <div class="shop-layout">
+
+      <!-- FILTER RAIL -->
+      <aside class="filters" id="filters">
+        <h4>Categories</h4>
+        <div class="f-list" id="catChips"></div>
+        <h4>Sort by</h4>
+        <select class="sort" id="sortSel" style="width:100%" onchange="currentSort=this.value;renderShop()">
+          <option value="popular">Most popular</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+        <h4>Price</h4>
+        <div class="price-ranges" id="priceChips"></div>
+        <h4>Availability</h4>
+        <div class="f-list">
+          <label><input type="checkbox" onchange="onlyInStock=this.checked;renderShop()"> In stock only</label>
+        </div>
+        <h4>Need help?</h4>
+        <button class="btn btn-wa btn-sm btn-block" onclick="waChat()">💬 Chat with DeryCare</button>
+      </aside>
+
+      <!-- RESULTS -->
+      <div>
+        <div class="f-head">
+          <div>
+            <h2 id="resultsTitle">All Products</h2>
+            <p class="small" id="resultsCount"></p>
+          </div>
+          <div class="toggle-btns">
+            <button class="on" onclick="gridView=true;this.classList.add('on');this.nextElementSibling.classList.remove('on');renderShop()">▦</button>
+            <button onclick="gridView=false;this.classList.add('on');this.previousElementSibling.classList.remove('on');renderShop()">☰</button>
+          </div>
+        </div>
+        <div class="p-grid mt16" id="shopGrid"></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="center">
+<!-- SECTIONS: best sellers, new arrivals, recommended -->
+<section class="section-alt">
   <div class="wrap">
-    <div class="final-cta">
-      <h2>Need it cleaned, not just supplied?</h2>
-      <p>Our trained professionals can do it for you.</p>
-      <a class="btn btn-amber" href="book.html">📅 BOOK A CLEANING</a>
-    </div>
+    <div class="sec-head"><h2>🔥 Best Sellers</h2></div>
+    <div class="hscroll" id="bestGrid"></div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>✨ New Arrivals</h2></div>
+    <div class="hscroll" id="newGrid"></div>
+  </div>
+</section>
+<section class="section-alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>🛒 Bulk Buying</h2><a class="link" href="shop.html?need=bulk">See all bulk →</a></div>
+    <p class="small" style="margin-bottom:14px">5L and 20L sizes for businesses, schools, hotels and large households — with real savings per litre.</p>
+    <div class="p-grid" id="bulkGrid"></div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>🏠 Household Essentials</h2></div>
+    <div class="hscroll" id="houseGrid"></div>
+  </div>
+</section>
+<section class="section-alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>💡 Recommended For You</h2></div>
+    <div class="hscroll" id="recGrid"></div>
+    <p class="small center mt16">Tell us what you're cleaning on WhatsApp and we'll recommend the right product.</p>
   </div>
 </section>
 
 <footer><div class="wrap"><div class="f-powered">
   <span>© 2026 DeryCare. All rights reserved.</span>
-  <img src="assets/img/brand/derycode-badge.png" alt="Powered by DeryCode" style="height:34px">
+  <span style="display:flex;align-items:center;gap:10px">Powered by <img src="assets/img/brand/derycode-badge.png" alt="DeryCode" style="height:32px"> technology</span>
 </div></div></footer>
 <script src="assets/app.js"></script>
 <script>
@@ -43,16 +103,26 @@
   const params = new URLSearchParams(location.search);
   if(params.get("need")) currentNeed = params.get("need");
   if(params.get("q")) currentQuery = params.get("q");
-  const chips = document.getElementById("needChips");
-  chips.innerHTML = NEEDS.map(n =>
-    `<span class="chip ${n.id===currentNeed?'on':''}" data-need="${n.id}" onclick="pickNeed('${n.id}')">${n.label}</span>`).join("");
-  function pickNeed(id){
-    currentNeed = id;
-    document.querySelectorAll("#needChips .chip").forEach(c =>
-      c.classList.toggle("on", c.dataset.need === id));
-    renderShop();
-  }
+
+  const needs = [{ id:"all", label:"All Products" }].concat(
+    SHOP_CATS.map(c => ({ id: c, label: c })),
+    [{ id:"home", label:"Home Cleaning" },{ id:"bulk", label:"Bulk / Jerrycans" }]
+  );
+  const seen = new Set();
+  $("catChips").innerHTML = needs.filter(n => !seen.has(n.id) && seen.add(n.id))
+    .map(n => `<a class="chip ${n.id===currentNeed?'on':''}" data-need="${n.id}" href="shop.html?need=${encodeURIComponent(n.id)}">${n.label}</a>`).join("");
+
+  $("resultsTitle").textContent = currentQuery ? `Results for "${currentQuery}"` : (needs.find(n => n.id === currentNeed) || {label:"All Products"}).label;
+
   renderShop();
+  $("resultsCount").textContent = `${PRODUCTS.filter(p => currentNeed==="all" || p.cats.includes(currentNeed) || p.cat===currentNeed).length} products`;
+
+  const byTag = t => PRODUCTS.filter(p => p.tags.includes(t));
+  $("bestGrid").innerHTML = byTag("bestseller").map(p => pCard(p)).join("");
+  $("newGrid").innerHTML = byTag("new").concat(PRODUCTS.filter(p => !p.tags.includes("new"))).map(p => pCard(p)).join("");
+  $("bulkGrid").innerHTML = PRODUCTS.filter(p => p.sizes.length >= 4).map(p => pCard(p)).join("");
+  $("houseGrid").innerHTML = byTag("household").map(p => pCard(p)).join("");
+  $("recGrid").innerHTML = [...PRODUCTS].reverse().map(p => pCard(p)).join("");
 </script>
 </body>
 </html>

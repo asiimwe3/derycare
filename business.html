@@ -3,69 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeryCare for Business — DeryCare</title>
+<title>Business & Institutional Cleaning — DeryCare</title>
+<meta name="description" content="Recurring cleaning contracts and bulk cleaning-product supply for hotels, restaurants, schools, offices, shops, apartments, hospitals and institutions in Western Uganda.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<section class="hero" style="background:var(--teal-soft)">
-  <div class="wrap center" style="padding:48px 0">
-    <span class="eyebrow">For Business</span>
-    <h1>Keep Your Business Clean.<br><span>Keep Your Costs Under Control.</span></h1>
-    <p class="lead">Product supply, cleaning contracts and cleaning management for offices, schools, hotels, clinics and shops.</p>
-    <div class="mt24"><a class="btn btn-primary" href="business.html#quote">Get a Business Solution</a></div>
+
+<div class="page-head">
+  <div class="wrap">
+    <h1>Business &amp; Institutional Cleaning</h1>
+    <p class="lead">Recurring cleaning contracts and bulk product supply for organizations across Western Uganda.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="business.html#quote">📋 Request a Business Quote</a>
+      <button class="btn btn-wa" onclick="waBulk()">💬 Bulk Product Enquiry</button>
+    </div>
   </div>
-</section>
+</div>
 
 <section>
   <div class="wrap">
-    <div class="grid g3">
-      <div class="card"><h3>📦 Product Supply</h3><p>Reliable scheduled supply of DeryCare products so you never run out.</p></div>
-      <div class="card"><h3>🤝 Cleaning Contracts</h3><p>Fixed-price contracts with vetted staff and agreed standards.</p></div>
-      <div class="card"><h3>🛒 Bulk Orders</h3><p>Wholesale pricing on volume orders.</p></div>
-      <div class="card"><h3>👕 Laundry</h3><p>Uniform and linen laundry for your team.</p></div>
-      <div class="card"><h3>🏫 Institutional Cleaning</h3><p>Schools, hotels, clinics and large facilities.</p></div>
-      <div class="card"><h3>📊 Cleaning Management</h3><p>Digitally managed schedules, staff attendance and accountability reports.</p></div>
+    <div class="sec-head"><h2>We Serve</h2></div>
+    <div class="grid g4">
+      <div class="card"><h3>🏨 Hotels</h3><p>Guest-ready rooms and common areas, on schedule.</p></div>
+      <div class="card"><h3>🍽️ Restaurants</h3><p>Hygiene-critical kitchen and dining cleaning.</p></div>
+      <div class="card"><h3>🏫 Schools</h3><p>Classrooms, dormitories and washrooms.</p></div>
+      <div class="card"><h3>🏢 Offices</h3><p>Reliable daily or weekly office cleaning.</p></div>
+      <div class="card"><h3>🛍️ Shops</h3><p>Presentable, customer-ready retail spaces.</p></div>
+      <div class="card"><h3>🏢 Apartments</h3><p>Common areas, staircases and compounds.</p></div>
+      <div class="card"><h3>🏥 Hospitals &amp; Clinics</h3><p>Thorough, hygiene-focused cleaning.</p></div>
+      <div class="card"><h3>🏛️ Institutions</h3><p>Customized facility cleaning contracts.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section-alt" id="quote">
-  <div class="wrap split" style="align-items:start">
-    <div>
-      <span class="eyebrow">Get a Quote</span>
-      <h2>Tell Us What You Need</h2>
-      <p class="lead mt16">Send us the details and we'll respond with a tailored solution and pricing.</p>
-      <div class="mt24">
-        <div class="card" style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:1.6rem">💬</span>
-          <div><b>Fastest response:</b><br><span class="small">Chat with our business team on WhatsApp</span></div>
-        </div>
-      </div>
+<section class="section-alt">
+  <div class="wrap">
+    <div class="sec-head"><h2>What We Offer</h2></div>
+    <div class="trust-grid">
+      <div class="trust"><span class="t-ico">🔁</span><div><b>Recurring cleaning contracts</b><p>Fixed schedules, fixed pricing, consistent standards.</p></div></div>
+      <div class="trust"><span class="t-ico">🛢️</span><div><b>Bulk product supply</b><p>5L &amp; 20L sizes with real savings per litre.</p></div></div>
+      <div class="trust"><span class="t-ico">👕</span><div><b>Uniform &amp; linen laundry</b><p>Collected, washed, ironed and returned.</p></div></div>
+      <div class="trust"><span class="t-ico">📊</span><div><b>Accountable reporting</b><p>Schedules and reports, backed by DeryCode systems.</p></div></div>
+      <div class="trust"><span class="t-ico">🧹</span><div><b>Trained teams</b><p>Vetted, uniformed, supervised cleaning staff.</p></div></div>
+      <div class="trust"><span class="t-ico">💬</span><div><b>Dedicated support</b><p>One WhatsApp line for your account.</p></div></div>
     </div>
-    <div class="card form">
-      <div><label for="bName">Company / Institution</label><input id="bName" placeholder="e.g. Sunrise Hotel"></div>
-      <div><label for="bContact">Contact person &amp; phone</label><input id="bContact" placeholder="e.g. David, 0770 000 000"></div>
-      <div><label for="bType">What do you need?</label>
-        <select id="bType"><option>Product supply</option><option>Cleaning contract</option>
-        <option>Bulk order</option><option>Laundry</option><option>Institutional cleaning</option><option>Cleaning management</option></select></div>
-      <div><label for="bDetails">Details</label><textarea id="bDetails" rows="4" placeholder="Size of premises, number of days per week, products needed..."></textarea></div>
-      <button class="btn btn-primary" onclick="sendB2B()">💬 Send via WhatsApp</button>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="wrap">
+    <div class="center"><h2>Request a Business Cleaning Quote</h2>
+    <p class="lead center" style="margin:10px auto 0">Tell us about your organization — we reply with a tailored plan and pricing.</p></div>
+    <div class="form mt24" style="max-width:640px;margin-inline:auto">
+      <div class="f-row">
+        <div><label for="bqOrg">Organization name</label><input id="bqOrg" placeholder="e.g. Mountain View Hotel"></div>
+        <div><label for="bqType">Type</label>
+          <select id="bqType"><option>Hotel</option><option>Restaurant</option><option>School</option>
+            <option>Office</option><option>Shop</option><option>Apartment</option>
+            <option>Hospital / Clinic</option><option>Institution</option></select></div>
+      </div>
+      <div class="f-row">
+        <div><label for="bqContact">Contact person</label><input id="bqContact" placeholder="Name"></div>
+        <div><label for="bqPhone">Phone (WhatsApp)</label><input id="bqPhone" placeholder="0770 000 000"></div>
+      </div>
+      <div><label for="bqLoc">Location</label><input id="bqLoc" placeholder="e.g. Fort Portal"></div>
+      <div class="f-row">
+        <div><label for="bqNeed">What do you need?</label>
+          <select id="bqNeed"><option>Cleaning contract</option><option>Bulk product supply</option><option>Both</option></select></div>
+        <div><label for="bqFreq">Frequency</label>
+          <select id="bqFreq"><option>Daily</option><option>Weekly</option><option>Bi-weekly</option><option>Monthly</option><option>One-off</option></select></div>
+      </div>
+      <div><label for="bqNotes">Details (size, products needed, special requirements)</label><textarea id="bqNotes" rows="3"></textarea></div>
+      <button class="btn btn-primary btn-block" onclick="sendQuote()">📋 Request Quote via WhatsApp</button>
     </div>
   </div>
 </section>
 
 <footer><div class="wrap"><div class="f-powered">
   <span>© 2026 DeryCare. All rights reserved.</span>
-  <img src="assets/img/brand/derycode-badge.png" alt="Powered by DeryCode" style="height:34px">
+  <span style="display:flex;align-items:center;gap:10px">Powered by <img src="assets/img/brand/derycode-badge.png" alt="DeryCode" style="height:32px"> technology</span>
 </div></div></footer>
 <script src="assets/app.js"></script>
 <script>
   chrome("business.html");
-  function sendB2B(){
-    const v = id => document.getElementById(id).value.trim();
-    if(!v("bName")){ toast("Please add your company name"); return; }
-    const msg = `Hello DeryCare! Business enquiry.\n\nCompany: ${v("bName")}\nContact: ${v("bContact")}\nNeed: ${document.getElementById("bType").value}\nDetails: ${v("bDetails")}`;
-    open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
+  function sendQuote(){
+    const v = id => $(id).value.trim();
+    if(!v("bqOrg") || !v("bqLoc")){ toast("Please add organization and location"); return; }
+    let m = "Hello DeryCare! Business quote request.\n\n";
+    m += `Organization: ${v("bqOrg")} (${$("bqType").value})\nContact: ${v("bqContact")}\nPhone: ${v("bqPhone") || "(same WhatsApp)"}`;
+    m += `\nLocation: ${v("bqLoc")}\nNeed: ${$("bqNeed").value}\nFrequency: ${$("bqFreq").value}`;
+    if(v("bqNotes")) m += `\nDetails: ${v("bqNotes")}`;
+    waMsg(m);
   }
 </script>
 </body>

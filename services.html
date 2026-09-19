@@ -3,51 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services — DeryCare</title>
-<meta name="description" content="Professional cleaning services for homes, offices, schools, hotels and institutions.">
+<title>Cleaning Services — DeryCare Western Uganda</title>
+<meta name="description" content="Professional cleaning services across Western Uganda: home, deep, office, school and hotel cleaning, laundry, shoe care and recurring plans.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<section class="hero" style="background:var(--teal-soft)">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">DeryCare Services</span>
-      <h1>More Than Products. <span>We Clean Too.</span></h1>
-      <p class="lead mt16">Trained, vetted professionals clean homes, offices, schools, hotels and businesses.</p>
-      <div class="mt24"><a class="btn btn-primary" href="book.html">📅 BOOK A CLEANING</a></div>
-    </div>
-    <img class="hero-img" src="assets/img/service.png" alt="DeryCare professional cleaner">
-  </div>
-</section>
 
+<div class="page-head">
+  <div class="wrap">
+    <h1>DeryCare Cleaning Services</h1>
+    <p class="lead">Professional, trained and vetted cleaners — across Kyenjojo, Fort Portal, Kasese, Hoima and all of Western Uganda.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#book">📅 Request a Cleaning</a>
+      <button class="btn btn-wa" onclick="waBooking()">💬 Book on WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES GRID -->
 <section>
   <div class="wrap">
-    <div class="grid g3">
-      <div class="card"><div class="icon-badge">🏠</div><h3>Home Cleaning</h3><p>Regular or one-off cleaning for living spaces. Dusting, mopping, surfaces, bathrooms and kitchen.</p><button class="btn btn-outline btn-block mt16" onclick="waBook('Home Cleaning')">Book This</button></div>
-      <div class="card"><div class="icon-badge">🧽</div><h3>Deep Cleaning</h3><p>Intensive top-to-bottom cleaning for moving in, moving out, or a fresh start.</p><button class="btn btn-outline btn-block mt16" onclick="waBook('Deep Cleaning')">Book This</button></div>
-      <div class="card"><div class="icon-badge">👕</div><h3>Laundry</h3><p>Wash, dry and iron. Collected and returned on schedule.</p><button class="btn btn-outline btn-block mt16" onclick="waBook('Laundry Service')">Book This</button></div>
-      <div class="card"><div class="icon-badge">👟</div><h3>Shoe Cleaning</h3><p>Clean, polish and protect — sneakers to leather.</p><button class="btn btn-outline btn-block mt16" onclick="waBook('Shoe Cleaning')">Book This</button></div>
-      <div class="card"><div class="icon-badge">🏢</div><h3>Office Cleaning</h3><p>Reliable scheduled cleaning that keeps workspaces presentable.</p><button class="btn btn-outline btn-block mt16" onclick="waBook('Office Cleaning')">Book This</button></div>
-      <div class="card"><div class="icon-badge">🏫</div><h3>Institutional Cleaning</h3><p>Schools, hotels, clinics and large facilities, with accountability reports.</p><button class="btn btn-outline btn-block mt16" onclick="waBook('Institutional Cleaning')">Book This</button></div>
-    </div>
+    <div class="sec-head"><h2>Our Services</h2></div>
+    <div class="grid g4" id="svcGrid"></div>
   </div>
 </section>
 
-<section class="center">
+<!-- BOOKING FORM -->
+<section class="section-alt" id="book">
   <div class="wrap">
-    <div class="final-cta">
-      <h2>Let us do the cleaning.</h2>
-      <p>Book in under a minute — we confirm on WhatsApp.</p>
-      <a class="btn btn-amber" href="book.html">📅 BOOK A CLEANING</a>
+    <div class="center">
+      <h2>Request a Cleaning</h2>
+      <p class="lead center" style="margin:10px auto 0">Fill in your details — your request opens in WhatsApp and our team confirms immediately.</p>
+    </div>
+    <div class="cart-layout mt24">
+      <div class="form">
+        <div class="f-row">
+          <div><label for="bkName">Name</label><input id="bkName" placeholder="e.g. Sarah Nakato"></div>
+          <div><label for="bkPhone">Phone (WhatsApp)</label><input id="bkPhone" placeholder="e.g. 0770 000 000"></div>
+        </div>
+        <div><label for="bkLocation">Location</label><input id="bkLocation" placeholder="e.g. Kyenjojo Town"></div>
+        <div class="f-row">
+          <div><label for="bkService">Service</label>
+            <select id="bkService">
+              <option>Home Cleaning</option><option>Deep Cleaning</option><option>Office Cleaning</option>
+              <option>School Cleaning</option><option>Hotel Cleaning</option><option>Laundry</option>
+              <option>Clothes Washing</option><option>Ironing</option><option>Shoe Cleaning</option>
+              <option>Shoe Polishing</option><option>Bathroom Cleaning</option><option>Kitchen Cleaning</option>
+              <option>Window Cleaning</option><option>Recurring Cleaning Plan</option>
+            </select></div>
+          <div><label for="bkProperty">Property type</label>
+            <select id="bkProperty"><option>Home</option><option>Office</option><option>School</option>
+              <option>Hotel</option><option>Restaurant</option><option>Shop</option><option>Apartment</option>
+              <option>Clinic / Hospital</option><option>Other</option></select></div>
+        </div>
+        <div class="f-row">
+          <div><label for="bkDate">Preferred date</label><input id="bkDate" type="date"></div>
+          <div><label for="bkTime">Preferred time</label>
+            <select id="bkTime"><option>Morning (8am–12pm)</option><option>Afternoon (12pm–5pm)</option><option>Evening (5pm–7pm)</option><option>Flexible</option></select></div>
+        </div>
+        <div class="f-row">
+          <div><label for="bkSize">Number of rooms / size</label><input id="bkSize" placeholder="e.g. 3-bedroom house"></div>
+          <div><label for="bkFreq">How often?</label>
+            <select id="bkFreq"><option>One-off</option><option>Weekly</option><option>Bi-weekly</option><option>Monthly</option></select></div>
+        </div>
+        <div><label for="bkNotes">Additional instructions</label><textarea id="bkNotes" rows="3" placeholder="Anything we should know?"></textarea></div>
+        <button class="btn btn-green btn-block" onclick="sendBooking()">💬 Request a Cleaning</button>
+        <p class="small center">No account needed. We reply during business hours.</p>
+      </div>
+      <div class="summary">
+        <h3>Where we clean</h3>
+        <p class="small">Cleaning services across Western Uganda:</p>
+        <div class="chips mt16">
+          <span class="chip chip-static">Kyenjojo</span><span class="chip chip-static">Fort Portal</span>
+          <span class="chip chip-static">Kasese</span><span class="chip chip-static">Hoima</span>
+          <span class="chip chip-static">Kibaale</span><span class="chip chip-static">Kagadi</span>
+          <span class="chip chip-static">Bundibugyo</span><span class="chip chip-static">Mbarara</span>
+          <span class="chip chip-static">Kabale</span>
+        </div>
+        <div class="map-frame mt16" style="box-shadow:none"><iframe title="DeryCare service area"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=29.55%2C-1.15%2C31.35%2C1.15&amp;layer=mapnik&amp;marker=0.6372%2C30.6440"
+          loading="lazy" style="height:220px"></iframe></div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer><div class="wrap"><div class="f-powered">
   <span>© 2026 DeryCare. All rights reserved.</span>
-  <img src="assets/img/brand/derycode-badge.png" alt="Powered by DeryCode" style="height:34px">
+  <span style="display:flex;align-items:center;gap:10px">Powered by <img src="assets/img/brand/derycode-badge.png" alt="DeryCode" style="height:32px"> technology</span>
 </div></div></footer>
 <script src="assets/app.js"></script>
-<script>chrome("services.html");</script>
+<script>
+  chrome("services.html");
+  const SERVICES = [
+    ["🏠","Home Cleaning","Regular or one-off cleaning for your living spaces."],
+    ["🧽","Deep Cleaning","Top-to-bottom intensive cleaning."],
+    ["🏢","Office Cleaning","Reliable scheduled cleaning for workspaces."],
+    ["🏫","School Cleaning","Classrooms, dormitories and facilities."],
+    ["🏨","Hotel Cleaning","Rooms, common areas, guest-ready standards."],
+    ["👕","Laundry","Wash, dry, iron — collected and returned."],
+    ["🧺","Clothes Washing","Careful washing, bright colours."],
+    ["♨️","Ironing","Neat, pressed clothes, ready to wear."],
+    ["👟","Shoe Cleaning","Clean, refresh and deodorise."],
+    ["✨","Shoe Polishing","Colour restoration and lasting shine."],
+    ["🚿","Bathroom Cleaning","Sanitised tiles, sinks and fittings."],
+    ["🍽️","Kitchen Cleaning","Degreased counters, sinks and stoves."],
+    ["🪟","Window Cleaning","Streak-free glass, inside and out."],
+    ["🔁","Recurring Plans","Weekly and monthly cleaning plans."]
+  ];
+  $("svcGrid").innerHTML = SERVICES.map(([ico,name,desc]) =>
+    `<div class="card"><h3>${ico} ${name}</h3><p>${desc}</p></div>`).join("");
+  function sendBooking(){
+    const v = id => $(id).value.trim();
+    const name = v("bkName"), loc = v("bkLocation");
+    if(!name || !loc){ toast("Please add your name and location"); return; }
+    let m = "Hello DeryCare! I would like to request a cleaning.\n\n";
+    m += `Service: ${$("bkService").value}\nName: ${name}\nPhone: ${v("bkPhone") || "(same WhatsApp)"}\nLocation: ${loc}`;
+    m += `\nProperty: ${$("bkProperty").value}\nSize: ${v("bkSize") || "-"}\nFrequency: ${$("bkFreq").value}`;
+    m += `\nPreferred date: ${v("bkDate") || "flexible"} (${$("bkTime").value})`;
+    if(v("bkNotes")) m += `\nNotes: ${v("bkNotes")}`;
+    waMsg(m);
+  }
+</script>
 </body>
 </html>

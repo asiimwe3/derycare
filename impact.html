@@ -7,71 +7,29 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<section class="hero" style="background:var(--teal-soft)">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Social Impact</span>
-      <h1>Clean Business. <span>Real Opportunities.</span></h1>
-      <p class="lead mt16">Impact is not a charity page at DeryCare — it is the business model. We train and equip young people to participate in production, cleaning, distribution, customer service and entrepreneurship.</p>
-      <div class="mt24"><a class="btn btn-primary" href="#join">Join the DeryCare Network</a></div>
-    </div>
-    <img class="hero-img" src="assets/img/impact.png" alt="Young people training at DeryCare">
-  </div>
-</section>
-
-<section>
+<div class="page-head">
   <div class="wrap">
-    <div class="stats">
-      <div class="stat"><b>Youth</b><span>trained in production, cleaning &amp; service</span></div>
-      <div class="stat"><b>Jobs</b><span>created across our operations</span></div>
-      <div class="stat"><b>Entrepreneurs</b><span>supported as agents &amp; refill points</span></div>
-    </div>
+    <h1>Impact</h1>
+    <p class="lead">Clean business creates real opportunities for young people in Western Uganda.</p>
   </div>
-</section>
-
-<section class="section-alt">
+</div>
+<section style="padding-top:10px">
   <div class="wrap">
-    <div class="center"><h2>How It Works</h2></div>
-    <div class="grid g3 mt32" style="text-align:left">
-      <div class="card"><div class="icon-badge">🎓</div><h3>Train</h3><p>Hands-on training in product production, professional cleaning and customer service.</p></div>
-      <div class="card"><div class="icon-badge">🧰</div><h3>Equip</h3><p>Tools, products and branded kits to work with real customers from day one.</p></div>
-      <div class="card"><div class="icon-badge">🚀</div><h3>Grow</h3><p>Paths into full employment — or support to start your own DeryCare agency.</p></div>
+    <div class="grid g3">
+      <div class="card"><h3>🏭 Production</h3><p>Young people trained in making quality cleaning products.</p></div>      <div class="card"><h3>🧹 Cleaning services</h3><p>Youth employed as trained, vetted cleaning professionals.</p></div>      <div class="card"><h3>🚚 Distribution</h3><p>Delivery and logistics skills across Western Uganda.</p></div>      <div class="card"><h3>💬 Customer service</h3><p>Real skills in serving and supporting customers.</p></div>      <div class="card"><h3>💼 Entrepreneurship</h3><p>Support for young entrepreneurs in the DeryCare network.</p></div>      <div class="card"><h3>🔁 Recurring plans</h3><p>Steady work through weekly and monthly contracts.</p></div>
     </div>
-  </div>
-</section>
-
-<section id="join">
-  <div class="wrap split" style="align-items:start">
-    <div>
+    <div class="final-cta mt32">
       <h2>Join the DeryCare Network</h2>
-      <p class="lead mt16">Are you a young person looking for skills and income? A shop owner who wants to stock or refill DeryCare? A distributor? We want to hear from you.</p>
-      <p class="small mt16">Careers at DeryCare are listed here too.</p>
-    </div>
-    <div class="card form" id="careers">
-      <div><label for="iName">Your name</label><input id="iName" placeholder="Full name"></div>
-      <div><label for="iPhone">Phone (WhatsApp)</label><input id="iPhone" placeholder="0770 000 000"></div>
-      <div><label for="iInterest">I'm interested in</label>
-        <select id="iInterest"><option>Training &amp; jobs</option><option>Becoming a refill agent</option>
-        <option>Distribution</option><option>Stocking DeryCare products</option><option>Other</option></select></div>
-      <div><label for="iMsg">Tell us about yourself</label><textarea id="iMsg" rows="3" placeholder="Your area, experience, availability..."></textarea></div>
-      <button class="btn btn-primary" onclick="sendJoin()">💬 Apply via WhatsApp</button>
+      <p>Shop the products that make clean living simple.</p>
+      <div class="mt24"><button class="btn btn-wa" onclick="waMsg('Hello DeryCare! I am interested in joining the DeryCare network.')">💬 Join via WhatsApp</button></div>
     </div>
   </div>
 </section>
-
 <footer><div class="wrap"><div class="f-powered">
   <span>© 2026 DeryCare. All rights reserved.</span>
-  <img src="assets/img/brand/derycode-badge.png" alt="Powered by DeryCode" style="height:34px">
+  <span style="display:flex;align-items:center;gap:10px">Powered by <img src="assets/img/brand/derycode-badge.png" alt="DeryCode" style="height:32px"> technology</span>
 </div></div></footer>
 <script src="assets/app.js"></script>
-<script>
-  chrome("impact.html");
-  function sendJoin(){
-    const v = id => document.getElementById(id).value.trim();
-    if(!v("iName")){ toast("Please add your name"); return; }
-    const msg = `Hello DeryCare! I want to join the network.\n\nName: ${v("iName")}\nPhone: ${v("iPhone")}\nInterest: ${document.getElementById("iInterest").value}\nAbout me: ${v("iMsg")}`;
-    open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
-  }
-</script>
+<script>chrome("index.html");</script>
 </body>
 </html>

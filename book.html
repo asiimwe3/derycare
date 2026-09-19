@@ -3,81 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="0; url=services.html#book">
 <title>Book a Cleaning — DeryCare</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<section class="hero" style="background:var(--teal-soft)">
-  <div class="wrap center" style="padding:48px 0">
-    <span class="eyebrow">Book a Cleaning</span>
-    <h1>Book in Under a Minute</h1>
-    <p class="lead">Based in Kyenjojo, serving Western Uganda. Fill in your details — your booking opens in WhatsApp and our team confirms immediately.</p>
-  </div>
-</section>
-<section>
-  <div class="wrap split" style="align-items:start">
-    <div class="card form">
-      <div><label for="bkName">Your name</label><input id="bkName" placeholder="e.g. Sarah Nakato"></div>
-      <div><label for="bkPhone">Phone (WhatsApp)</label><input id="bkPhone" placeholder="e.g. 0770 000 000"></div>
-      <div><label for="bkService">Service</label>
-        <select id="bkService">
-          <option>Home Cleaning</option><option>Deep Cleaning</option><option>Laundry</option>
-          <option>Shoe Cleaning</option><option>Office Cleaning</option><option>Institutional Cleaning</option>
-        </select></div>
-      <div><label for="bkDate">Preferred date</label><input id="bkDate" type="date"></div>
-      <div><label for="bkPlace">Location</label><input id="bkPlace" placeholder="e.g. Kyenjojo Town, Fort Portal, Kasese..."></div>
-      <div><label for="bkNotes">Anything we should know?</label><textarea id="bkNotes" rows="3" placeholder="Size of space, special requests..."></textarea></div>
-      <button class="btn btn-primary" onclick="sendBooking()">💬 Send Booking via WhatsApp</button>
-      <p class="small center">No account needed. We reply during business hours.</p>
-    </div>
-    <div>
-      <img src="assets/img/service.png" alt="DeryCare professional cleaner" style="border-radius:22px;box-shadow:var(--shadow)">
-      <div class="card mt24">
-        <h3>What happens next?</h3>
-        <p class="mt16">1. We confirm the date and quote on WhatsApp.<br>2. A trained, vetted professional arrives on time with supplies.<br>3. You approve the work before we leave.</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section-alt" id="service-area">
-  <div class="wrap center">
-    <span class="eyebrow">Where We Serve</span>
-    <h2>Western Uganda, One Clean Region</h2>
-    <p class="lead">DeryCare is based in Kyenjojo — right at the heart of Western Uganda — so we reach you fast, wherever you are in the region.</p>
-    <div class="map-frame mt24">
-      <iframe title="DeryCare service area — Kyenjojo, Western Uganda"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=29.55%2C-0.95%2C31.15%2C1.15&amp;layer=mapnik&amp;marker=0.6372%2C30.6440"
-        loading="lazy"></iframe>
-    </div>
-    <p class="small mt16" style="margin-bottom:0">📍 Our base: Kyenjojo Town, Kyenjojo District, Western Uganda</p>
-    <div class="chips mt24 map-towns" style="justify-content:center">
-      <span class="chip">Kyenjojo</span><span class="chip">Fort Portal</span><span class="chip">Kasese</span>
-      <span class="chip">Kabarole</span><span class="chip">Kyenjojo District</span><span class="chip">Kibaale</span>
-      <span class="chip">Kagadi</span><span class="chip">Bunyagabu</span><span class="chip">Ntoroko</span>
-      <span class="chip">Bundibugyo</span><span class="chip">Kyegegwa</span><span class="chip">Kyegewa</span>
-      <span class="chip">Kamwenge</span><span class="chip">Ibanda</span><span class="chip">Mbarara</span>
-      <span class="chip">Bushenyi</span><span class="chip">Hoima</span><span class="chip">Masindi</span>
-    </div>
-    <p class="small mt16">Not on the map? <a href="contact.html">Ask us</a> — if you're in Western Uganda, we'll find a way to reach you.</p>
-  </div>
-</section>
-
-<footer><div class="wrap"><div class="f-powered">
-  <span>© 2026 DeryCare. All rights reserved.</span>
-  <img src="assets/img/brand/derycode-badge.png" alt="Powered by DeryCode" style="height:34px">
-</div></div></footer>
-<script src="assets/app.js"></script>
-<script>
-  chrome("services.html");
-  function sendBooking(){
-    const v = id => document.getElementById(id).value.trim();
-    const name = v("bkName"), phone = v("bkPhone"), service = document.getElementById("bkService").value,
-          date = v("bkDate"), place = v("bkPlace"), notes = v("bkNotes");
-    if(!name || !place){ toast("Please add your name and location"); return; }
-    let msg = `Hello DeryCare! I would like to book a cleaning.\n\nService: ${service}\nName: ${name}\nPhone: ${phone || "(same WhatsApp)"}\nLocation: ${place}\nPreferred date: ${date || "flexible"}\n`;
-    if(notes) msg += `Notes: ${notes}\n`;
-    open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
-  }
-</script>
+<script>location.replace("services.html#book");</script>
 </body>
 </html>

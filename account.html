@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — DeryCare</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="page-head">
+  <div class="wrap">
+    <h1>My Account</h1>
+    <p class="lead">Track your orders, saved items and account details.</p>
+  </div>
+</div>
+<section style="padding-top:10px">
+  <div class="wrap" id="accBox"></div>
+</section>
+<footer><div class="wrap"><div class="f-powered">
+  <span>© 2026 DeryCare. All rights reserved.</span>
+  <span style="display:flex;align-items:center;gap:10px">Powered by <img src="assets/img/brand/derycode-badge.png" alt="DeryCode" style="height:32px"> technology</span>
+</div></div></footer>
+<script src="assets/app.js"></script>
+<script>
+  chrome("account.html");
+  const orderParam = new URLSearchParams(location.search).get("order");
+
+  function orderStatusHTML(o){
+    const flow = ["Pending Payment","Paid","Processing","Out for Delivery","Delivered"];
+    const idx = flow.indexOf(o.status);
+    if(idx === -1) return `<span class="chip chip-static" style="border-color:var(--danger);color:var(--danger)">${o.status}</span>`;
+    return `<div class="status-track">${flow.map((s,i) => `<div class="status-step ${i<idx?'done':i===idx?'current':''}"><span class="dot">${i<idx?'✓':''}</span>${s}</div>`).join("")}</div>`;
+  }
+
+  function orderCard(o){
+    return `<div class="card mt16">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <div><b>Order ${o.number}</b><div class="small">${new Date(o.date).toLocaleString("en-UG")}</div></div>
+        <div style="text-align:right"><b>${UGX(o.total)}</b><div class="small">${o.items.length} item${o.items.length>1?"s":""} · ${o.delivery} delivery</div></div>
+      </div>
+      <div class="mt16">${orderStatusHTML(o)}</div>
+      <div class="small mt8">${o.items.map(l => `${getP(l.id)?.name || l.id} (${l.size}) ×${l.qty}`).join(" · ")}</div>
+      <div class="mt8"><button class="btn btn-wa btn-sm" onclick="waMsg('Hello DeryCare! I am following up on my order ${o.number}.')">💬 Follow up on WhatsApp</button></div>
+    </div>`;
+  }
+
+  const highlight = orders.find(o => o.number === orderParam);
+  let html = "";
+
+  if(highlight){
+    html += `<div class="card" style="border-color:var(--green);background:var(--green-soft)">
+      <h3>✅ Order placed: ${highlight.number}</h3>
+      <p class="mt8">Your order was sent to DeryCare on WhatsApp — keep your order number for tracking. We confirm price, delivery and payment with you there.</p>
+    </div>`;
+  }
+
+  html += `<h2 class="mt24">Recent Orders</h2>`;
+  if(orders.length){
+    html += orders.slice(0, 8).map(orderCard).join("");
+  } else {
+    html += `<div class="card mt16 center"><p>No orders yet.</p><a class="btn btn-primary btn-sm mt16" href="shop.html" style="margin-top:12px">Start Shopping</a></div>`;
+  }
+
+  html += `<h2 class="mt32">Saved for Later</h2>`;
+  html += saved.length
+    ? `<div class="grid mt16">${saved.map(l => `<div class="cart-row"><img src="assets/img/products/${getP(l.id).img}" alt=""><div style="flex:1"><b>${getP(l.id).name}</b><div class="small">${l.size} · ${UGX(linePrice(l))}</div></div></div>`).join("")}</div>`
+    : `<div class="card mt16 center"><p>No saved items yet.</p></div>`;
+
+  html += `<h2 class="mt32">Account Details</h2>
+  <div class="card mt16">
+    <p class="small">Full customer accounts with order history, saved addresses and secure Pesapal payments are launching soon. For now, your orders are saved on this device and tracked via your order number on WhatsApp.</p>
+    <div class="mt16"><button class="btn btn-wa btn-sm" onclick="waMsg('Hello DeryCare! I would like help with my account and orders.')">💬 Account Support on WhatsApp</button></div>
+  </div>`;
+
+  $("accBox").innerHTML = html;
+</script>
+</body>
+</html>
