@@ -4,14 +4,14 @@ const UGX = n => "UGX " + n.toLocaleString("en-UG");
 
 /* Real DeryCare product line (from official catalogue). */
 const PRODUCTS = [
-  { id:"msc",     name:"Multi-Surface Cleaner", benefit:"Cleans · Shines · Freshens — for a cleaner, healthier home", img:"multi-surface.png", color:"#3fae5a", need:["home","kitchen","business","institution"], sizes:[["500ml",5000],["1L",8000],["5L",30000],["20L",95000]] },
+  { id:"msc",     name:"Multi-Surface Cleaner", benefit:"Cleans · Shines · Freshens — for a cleaner, healthier home", img:"multi-surface.png", color:"#3fae5a", need:["home","kitchen","business","institution"], sizes:[["500ml",12000],["1L",19000],["5L",72000],["20L",228000]] },
   { id:"floor",   name:"Floor Cleaner",         benefit:"Deep clean, fresh fragrance",                                img:"floor.png",         color:"#1b6fd6", need:["home","institution","business"],           sizes:[["500ml",5500],["1L",8500],["5L",31000],["20L",98000]] },
   { id:"glass",   name:"Glass Cleaner",         benefit:"Streak-free, crystal clear shine",                          img:"glass.png",         color:"#3fb6d6", need:["home","business"],                          sizes:[["500ml",5000],["1L",8000]] },
   { id:"toilet",  name:"Toilet Cleaner",        benefit:"Removes stains · Kills germs · Long-lasting freshness",     img:"toilet.png",        color:"#7a3fc9", need:["bathroom","home","business","institution"], sizes:[["500ml",6000],["1L",9500],["5L",33000],["20L",99000]] },
-  { id:"dish",    name:"Dishwashing Liquid",    benefit:"Powerful grease removal, lemon fresh",                      img:"dishwash.png",      color:"#eab308", need:["kitchen","home","business"],                sizes:[["500ml",6000],["1L",10000],["5L",35000],["20L",105000]] },
-  { id:"handwash",name:"Hand Wash",             benefit:"Gentle on skin · Kills germs · Soft & fresh",               img:"handwash.png",      color:"#e0559b", need:["home","business","institution","bathroom"], sizes:[["500ml",6000],["1L",9500],["5L",32000],["20L",96000]] },
-  { id:"shoe",    name:"Shoe Polish",           benefit:"Restores · Protects · Shines",                              img:"shoe-polish.png",   color:"#22252a", need:["shoes"],                                    sizes:[["75ml",6000],["100ml",8000]] },
-  { id:"laundry", name:"Laundry Detergent",     benefit:"Bright clothes, ocean-fresh scent",                         img:"laundry.png",       color:"#2f6fd0", need:["clothes","laundry","institution"],          sizes:[["1L",7500],["5L",30000],["20L",99000]] }
+  { id:"dish",    name:"Dishwashing Liquid",    benefit:"Powerful grease removal, lemon fresh",                      img:"dishwash.png",      color:"#eab308", need:["kitchen","home","business"],                sizes:[["500ml",10000],["1L",16500],["5L",58000],["20L",175000]] },
+  { id:"handwash",name:"Hand Wash",             benefit:"Gentle on skin · Kills germs · Soft & fresh",               img:"handwash.png",      color:"#e0559b", need:["home","business","institution","bathroom"], sizes:[["500ml",12000],["1L",19000],["5L",64000],["20L",192000]] },
+  { id:"shoe",    name:"Shoe Polish",           benefit:"Restores · Protects · Shines",                              img:"shoe-polish.png",   color:"#22252a", need:["shoes"],                                    sizes:[["75ml",8000],["100ml",10500]] },
+  { id:"laundry", name:"Laundry Detergent",     benefit:"Bright clothes, ocean-fresh scent",                         img:"laundry.png",       color:"#2f6fd0", need:["clothes","laundry","institution"],          sizes:[["1L",15000],["5L",60000],["20L",198000]] }
 ];
 
 const NEEDS = [
@@ -68,7 +68,7 @@ const waChat = () => open(`https://wa.me/${WA}?text=${encodeURIComponent("Hello 
 const NAV = [
   ["index.html","Home"],["shop.html","Products"],["services.html","Services"],
   ["business.html","For Business"],["refill.html","Refill"],["about.html","About"],
-  ["impact.html","Impact"],["clean-living.html","Clean Living"],["contact.html","Contact"]
+  ["impact.html","Impact"],["contact.html","Contact"]
 ];
 function chrome(active){
   const links = NAV.map(([href,label]) =>
@@ -81,9 +81,14 @@ function chrome(active){
     <nav class="nav">
       <a class="brand" href="index.html"><img src="assets/img/brand/mark.png" alt="DeryCare" style="height:36px;width:auto"></a>
       <div class="nav-links">${links}</div>
+      <form class="nav-search" onsubmit="event.preventDefault(); location.href='shop.html?q='+encodeURIComponent(this.q.value);">
+        <input name="q" type="search" placeholder="Search products…" aria-label="Search products">
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
       <div class="nav-cta">
         <a class="btn btn-outline cart-btn" href="cart.html">🛒 <span class="cart-count">0</span></a>
-        <a class="btn btn-primary" href="book.html">📅 Book a Cleaning</a>
+        <a class="btn btn-primary" href="shop.html">Shop Products</a>
+        <a class="btn btn-green" href="book.html">📅 Book a Cleaning</a>
       </div>
       <button id="menuBtn" aria-label="Menu">☰</button>
     </nav>
@@ -122,11 +127,16 @@ function pCard(p, sizeIdx = 0){
 
 /* ── Shop page ── */
 let currentNeed = "all";
+let currentQuery = "";
 function renderShop(){
   const grid = document.getElementById("shopGrid"); if(!grid) return;
-  const list = PRODUCTS.filter(p => currentNeed === "all" || p.need.includes(currentNeed));
+  let list = PRODUCTS.filter(p => currentNeed === "all" || p.need.includes(currentNeed));
+  if(currentQuery){
+    const q = currentQuery.toLowerCase();
+    list = list.filter(p => p.name.toLowerCase().includes(q) || p.benefit.toLowerCase().includes(q));
+  }
   grid.innerHTML = list.map((p,i) => pCard(p, 0)).join("") ||
-    `<p class="lead">Products for this need are coming soon — <a href="contact.html">ask us directly</a>.</p>`;
+    `<p class="lead">No products match "${currentQuery || 'this need'}" — <a href="contact.html">ask us directly</a>.</p>`;
 }
 
 /* ── Cart page ── */

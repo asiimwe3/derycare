@@ -42,6 +42,7 @@
   chrome("shop.html");
   const params = new URLSearchParams(location.search);
   if(params.get("need")) currentNeed = params.get("need");
+  if(params.get("q")) currentQuery = params.get("q");
   const chips = document.getElementById("needChips");
   chips.innerHTML = NEEDS.map(n =>
     `<span class="chip ${n.id===currentNeed?'on':''}" data-need="${n.id}" onclick="pickNeed('${n.id}')">${n.label}</span>`).join("");

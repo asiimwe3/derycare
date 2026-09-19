@@ -179,3 +179,10 @@ footer h4{color:#fff;margin-bottom:14px}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:99}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.nav-search{display:flex;align-items:center;gap:0;margin-left:auto;border:1.5px solid #e3e8ef;border-radius:999px;padding:2px 4px 2px 14px;min-width:170px}
+.nav-search input{border:0;outline:0;font:inherit;font-size:.9rem;padding:7px 0;flex:1;background:transparent}
+.nav-search button{border:0;background:var(--teal);color:#fff;border-radius:999px;width:32px;height:32px;cursor:pointer;font-size:.9rem}
+.nav-links{margin-left:0}
+.btn-green{background:#3fae5a;color:#fff}
+@media(max-width:1020px){.nav-search{display:none}}
