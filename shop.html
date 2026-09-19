@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Products — DeryCare</title>
+<meta name="description" content="DeryCare cleaning products — shop by what you need to clean.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<section class="hero" style="background:var(--teal-soft)">
+  <div class="wrap center" style="padding:48px 0">
+    <span class="eyebrow">Shop</span>
+    <h1>Shop by Need</h1>
+    <p class="lead">Don't know which product you need? Just pick what you're cleaning — we'll do the rest.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="chips" id="needChips"></div>
+    <div class="grid g3 mt32" id="shopGrid"></div>
+  </div>
+</section>
+
+<section class="center">
+  <div class="wrap">
+    <div class="final-cta">
+      <h2>Need it cleaned, not just supplied?</h2>
+      <p>Our trained professionals can do it for you.</p>
+      <a class="btn btn-amber" href="book.html">📅 BOOK A CLEANING</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="f-powered">
+  <span>© 2026 DeryCare. All rights reserved.</span>
+  <span>Powered by <b>DeryCode</b> technology</span>
+</div></div></footer>
+<script src="assets/app.js"></script>
+<script>
+  chrome("shop.html");
+  const params = new URLSearchParams(location.search);
+  if(params.get("need")) currentNeed = params.get("need");
+  const chips = document.getElementById("needChips");
+  chips.innerHTML = NEEDS.map(n =>
+    `<span class="chip ${n.id===currentNeed?'on':''}" data-need="${n.id}" onclick="pickNeed('${n.id}')">${n.label}</span>`).join("");
+  function pickNeed(id){
+    currentNeed = id;
+    document.querySelectorAll("#needChips .chip").forEach(c =>
+      c.classList.toggle("on", c.dataset.need === id));
+    renderShop();
+  }
+  renderShop();
+</script>
+</body>
+</html>

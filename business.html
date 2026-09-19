@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeryCare for Business — DeryCare</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<section class="hero" style="background:var(--teal-soft)">
+  <div class="wrap center" style="padding:48px 0">
+    <span class="eyebrow">For Business</span>
+    <h1>Keep Your Business Clean.<br><span>Keep Your Costs Under Control.</span></h1>
+    <p class="lead">Product supply, cleaning contracts and cleaning management for offices, schools, hotels, clinics and shops.</p>
+    <div class="mt24"><a class="btn btn-primary" href="business.html#quote">Get a Business Solution</a></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="grid g3">
+      <div class="card"><h3>📦 Product Supply</h3><p>Reliable scheduled supply of DeryCare products so you never run out.</p></div>
+      <div class="card"><h3>🤝 Cleaning Contracts</h3><p>Fixed-price contracts with vetted staff and agreed standards.</p></div>
+      <div class="card"><h3>🛒 Bulk Orders</h3><p>Wholesale pricing on volume orders.</p></div>
+      <div class="card"><h3>👕 Laundry</h3><p>Uniform and linen laundry for your team.</p></div>
+      <div class="card"><h3>🏫 Institutional Cleaning</h3><p>Schools, hotels, clinics and large facilities.</p></div>
+      <div class="card"><h3>📊 Cleaning Management</h3><p>Digitally managed schedules, staff attendance and accountability reports.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="quote">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <span class="eyebrow">Get a Quote</span>
+      <h2>Tell Us What You Need</h2>
+      <p class="lead mt16">Send us the details and we'll respond with a tailored solution and pricing.</p>
+      <div class="mt24">
+        <div class="card" style="display:flex;gap:10px;align-items:center">
+          <span style="font-size:1.6rem">💬</span>
+          <div><b>Fastest response:</b><br><span class="small">Chat with our business team on WhatsApp</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card form">
+      <div><label for="bName">Company / Institution</label><input id="bName" placeholder="e.g. Sunrise Hotel"></div>
+      <div><label for="bContact">Contact person &amp; phone</label><input id="bContact" placeholder="e.g. David, 0770 000 000"></div>
+      <div><label for="bType">What do you need?</label>
+        <select id="bType"><option>Product supply</option><option>Cleaning contract</option>
+        <option>Bulk order</option><option>Laundry</option><option>Institutional cleaning</option><option>Cleaning management</option></select></div>
+      <div><label for="bDetails">Details</label><textarea id="bDetails" rows="4" placeholder="Size of premises, number of days per week, products needed..."></textarea></div>
+      <button class="btn btn-primary" onclick="sendB2B()">💬 Send via WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="f-powered">
+  <span>© 2026 DeryCare. All rights reserved.</span>
+  <span>Powered by <b>DeryCode</b> technology</span>
+</div></div></footer>
+<script src="assets/app.js"></script>
+<script>
+  chrome("business.html");
+  function sendB2B(){
+    const v = id => document.getElementById(id).value.trim();
+    if(!v("bName")){ toast("Please add your company name"); return; }
+    const msg = `Hello DeryCare! Business enquiry.\n\nCompany: ${v("bName")}\nContact: ${v("bContact")}\nNeed: ${document.getElementById("bType").value}\nDetails: ${v("bDetails")}`;
+    open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
+  }
+</script>
+</body>
+</html>

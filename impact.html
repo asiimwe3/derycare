@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impact — DeryCare</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<section class="hero" style="background:var(--teal-soft)">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Social Impact</span>
+      <h1>Clean Business. <span>Real Opportunities.</span></h1>
+      <p class="lead mt16">Impact is not a charity page at DeryCare — it is the business model. We train and equip young people to participate in production, cleaning, distribution, customer service and entrepreneurship.</p>
+      <div class="mt24"><a class="btn btn-primary" href="#join">Join the DeryCare Network</a></div>
+    </div>
+    <img class="hero-img" src="assets/img/impact.png" alt="Young people training at DeryCare">
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>Youth</b><span>trained in production, cleaning &amp; service</span></div>
+      <div class="stat"><b>Jobs</b><span>created across our operations</span></div>
+      <div class="stat"><b>Entrepreneurs</b><span>supported as agents &amp; refill points</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="center"><h2>How It Works</h2></div>
+    <div class="grid g3 mt32" style="text-align:left">
+      <div class="card"><div class="icon-badge">🎓</div><h3>Train</h3><p>Hands-on training in product production, professional cleaning and customer service.</p></div>
+      <div class="card"><div class="icon-badge">🧰</div><h3>Equip</h3><p>Tools, products and branded kits to work with real customers from day one.</p></div>
+      <div class="card"><div class="icon-badge">🚀</div><h3>Grow</h3><p>Paths into full employment — or support to start your own DeryCare agency.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="join">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <h2>Join the DeryCare Network</h2>
+      <p class="lead mt16">Are you a young person looking for skills and income? A shop owner who wants to stock or refill DeryCare? A distributor? We want to hear from you.</p>
+      <p class="small mt16">Careers at DeryCare are listed here too.</p>
+    </div>
+    <div class="card form" id="careers">
+      <div><label for="iName">Your name</label><input id="iName" placeholder="Full name"></div>
+      <div><label for="iPhone">Phone (WhatsApp)</label><input id="iPhone" placeholder="0770 000 000"></div>
+      <div><label for="iInterest">I'm interested in</label>
+        <select id="iInterest"><option>Training &amp; jobs</option><option>Becoming a refill agent</option>
+        <option>Distribution</option><option>Stocking DeryCare products</option><option>Other</option></select></div>
+      <div><label for="iMsg">Tell us about yourself</label><textarea id="iMsg" rows="3" placeholder="Your area, experience, availability..."></textarea></div>
+      <button class="btn btn-primary" onclick="sendJoin()">💬 Apply via WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><div class="f-powered">
+  <span>© 2026 DeryCare. All rights reserved.</span>
+  <span>Powered by <b>DeryCode</b> technology</span>
+</div></div></footer>
+<script src="assets/app.js"></script>
+<script>
+  chrome("impact.html");
+  function sendJoin(){
+    const v = id => document.getElementById(id).value.trim();
+    if(!v("iName")){ toast("Please add your name"); return; }
+    const msg = `Hello DeryCare! I want to join the network.\n\nName: ${v("iName")}\nPhone: ${v("iPhone")}\nInterest: ${document.getElementById("iInterest").value}\nAbout me: ${v("iMsg")}`;
+    open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
+  }
+</script>
+</body>
+</html>
