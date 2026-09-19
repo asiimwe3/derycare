@@ -301,3 +301,27 @@ footer{background:var(--ink);color:#c8d2e0;margin-top:40px;padding:38px 0 96px}
 .p-actions{grid-template-columns:auto 1fr}
 @media(max-width:1020px){.nav-cta .nav-wa{display:inline-flex}}
 @media(min-width:1021px){.nav-wa{display:none}}
+
+/* ── Mobile refinements ── */
+@media(max-width:1020px){
+  .nav{flex-wrap:wrap;gap:10px;padding:10px 0}
+  .nav-search{order:10;flex:1 1 100%;max-width:100%;margin-left:0}
+  .nav-cta{margin-left:auto}
+  #menuBtn{margin-left:8px}
+  .brand img{height:34px}
+}
+@media(max-width:560px){
+  #announce{font-size:.72rem;padding:6px 10px;line-height:1.5}
+  .hero-grid{padding:22px 0}
+  .hero-cta .btn{flex:1 1 100%}
+  .hero-badge{font-size:.72rem;padding:6px 10px}
+  h1{font-size:1.55rem}
+  .p-img{height:150px}
+  .qty-mini button{width:26px;height:32px}
+  .qty-mini b{width:22px;font-size:.78rem}
+  .p-actions .btn{font-size:.76rem;padding:8px 4px}
+  .final-cta{padding:28px 18px;border-radius:16px}
+  #bottomBar a{font-size:.6rem}
+  #waFloat{width:50px;height:50px;right:12px;bottom:72px}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+}
