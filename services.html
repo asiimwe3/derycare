@@ -178,7 +178,7 @@
     m += `\nPreferred date: ${v("bkDate") || "flexible"} (${$("bkTime").value})`;
     if(v("bkNotes")) m += `\nNotes: ${v("bkNotes")}`;
     const bkNo = "DC-B" + Date.now().toString().slice(-6);
-    sbInsert("bookings", {
+    sbInsert("derycare_bookings", {
       booking_no: bkNo,
       service: $("bkService").value,
       customer_name: name,

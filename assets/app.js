@@ -4,8 +4,8 @@ const UGX = n => "UGX " + n.toLocaleString("en-UG");
 const $ = id => document.getElementById(id);
 
 /* ── Supabase backend (orders & bookings persist server-side) ── */
-const SB_URL = "https://upjmzobjnpeldiubuopk.supabase.co";
-const SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwam16b2JqbnBlbGRpdWJ1b3BrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4MTMwNjEsImV4cCI6MjEwNTM4OTA2MX0.cQKK57xjI8F0I-gc_SQzT40bZx90m87Iew_wmUDkZfc";
+const SB_URL = "https://emldbjqegftrngxypeca.supabase.co";
+const SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVtbGRianFlZ2Z0cm5neHlwZWNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjQzNTIsImV4cCI6MjA5MzkwMDM1Mn0.cofNEj5g3n9ls2HTXFXQG1_IXPUdLINDtYr820u2MtM";
 async function sbInsert(table, row){
   try{
     const r = await fetch(SB_URL + "/rest/v1/" + table, {
@@ -534,7 +534,7 @@ function ckPlace(){
     name: $("ckName")?.value || "", items: cart.map(l => ({ ...l })), subtotal: cartTotal(), delivery: ckDelivery, fee: ckFee(), total: cartTotal() + ckFee()
   };
   orders.unshift(order); persist();
-  sbInsert("orders", {
+  sbInsert("derycare_orders", {
     order_no: num,
     customer_name: ($("ckName")?.value || "").trim(),
     phone: ($("ckPhone")?.value || "").trim(),
@@ -565,7 +565,7 @@ async function ckPayOnline(){
     name: $("ckName")?.value || "", items: cart.map(l => ({ ...l })), subtotal: cartTotal(), delivery: ckDelivery, fee: ckFee(), total: cartTotal() + ckFee()
   };
   orders.unshift(order); persist();
-  const ok = await sbInsert("orders", {
+  const ok = await sbInsert("derycare_orders", {
     order_no: num,
     customer_name: ($("ckName")?.value || "").trim(),
     phone: ($("ckPhone")?.value || "").trim(),
