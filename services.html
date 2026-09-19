@@ -45,11 +45,14 @@
         <div class="f-row">
           <div><label for="bkService">Service</label>
             <select id="bkService">
-              <option>Home Cleaning</option><option>Deep Cleaning</option><option>Office Cleaning</option>
-              <option>School Cleaning</option><option>Hotel Cleaning</option><option>Laundry</option>
-              <option>Clothes Washing</option><option>Ironing</option><option>Shoe Cleaning</option>
-              <option>Shoe Polishing</option><option>Bathroom Cleaning</option><option>Kitchen Cleaning</option>
-              <option>Window Cleaning</option><option>Recurring Cleaning Plan</option>
+              <option>Home Cleaning</option><option>Office &amp; Business Cleaning</option>
+              <option>Sofa &amp; Upholstery Cleaning</option><option>Clothes Washing</option>
+              <option>Shoe Cleaning</option><option>Shoe Polishing</option>
+              <option>Mattress Cleaning</option><option>Carpet Cleaning</option>
+              <option>Window Cleaning</option><option>Car Interior Cleaning</option>
+              <option>Move-in / Move-out Cleaning</option><option>Deep Cleaning</option>
+              <option>School Cleaning</option><option>Hotel Cleaning</option>
+              <option>Recurring Cleaning Plan</option>
             </select></div>
           <div><label for="bkProperty">Property type</label>
             <select id="bkProperty"><option>Home</option><option>Office</option><option>School</option>
@@ -96,23 +99,22 @@
 <script>
   chrome("services.html");
   const SERVICES = [
-    ["🏠","Home Cleaning","Regular or one-off cleaning for your living spaces."],
-    ["🧽","Deep Cleaning","Top-to-bottom intensive cleaning."],
-    ["🏢","Office Cleaning","Reliable scheduled cleaning for workspaces."],
-    ["🏫","School Cleaning","Classrooms, dormitories and facilities."],
-    ["🏨","Hotel Cleaning","Rooms, common areas, guest-ready standards."],
-    ["👕","Laundry","Wash, dry, iron — collected and returned."],
-    ["🧺","Clothes Washing","Careful washing, bright colours."],
-    ["♨️","Ironing","Neat, pressed clothes, ready to wear."],
+    ["🏠","Home Cleaning","Everyday cleaning for your living spaces."],
+    ["🏢","Office & Business Cleaning","Reliable scheduled cleaning for workspaces."],
+    ["🛋️","Sofa & Upholstery Cleaning","Deep clean for sofas and fabric."],
+    ["🧺","Clothes Washing","Wash, dry, fold — collected and returned."],
     ["👟","Shoe Cleaning","Clean, refresh and deodorise."],
     ["✨","Shoe Polishing","Colour restoration and lasting shine."],
-    ["🚿","Bathroom Cleaning","Sanitised tiles, sinks and fittings."],
-    ["🍽️","Kitchen Cleaning","Degreased counters, sinks and stoves."],
-    ["🪟","Window Cleaning","Streak-free glass, inside and out."],
-    ["🔁","Recurring Plans","Weekly and monthly cleaning plans."]
+    ["🛏️","Mattress Cleaning","Fresh, sanitised mattresses."],
+    ["🧹","Carpet Cleaning","Dirt and stains lifted out."],
+    ["🪟","Window Cleaning","Streak-free, inside and out."],
+    ["🚗","Car Interior Cleaning","Fresh, tidy, dust-free interiors."],
+    ["🏠","Move-in / Move-out Cleaning","Handover-ready deep cleans."],
+    ["🧼","Deep Cleaning","Top-to-bottom intensive cleaning."],
+    ["🏫","School Cleaning","Classrooms, dormitories and facilities."],
+    ["🏨","Hotel Cleaning","Rooms and common areas, guest-ready."],
+    ["🔁","Recurring Cleaning Plans","Weekly and monthly cleaning plans."]
   ];
-  $("svcGrid").innerHTML = SERVICES.map(([ico,name,desc]) =>
-    `<div class="card"><h3>${ico} ${name}</h3><p>${desc}</p></div>`).join("");
   function sendBooking(){
     const v = id => $(id).value.trim();
     const name = v("bkName"), loc = v("bkLocation");

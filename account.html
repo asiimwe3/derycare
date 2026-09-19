@@ -66,6 +66,11 @@
     ? `<div class="grid mt16">${saved.map(l => `<div class="cart-row"><img src="assets/img/products/${getP(l.id).img}" alt=""><div style="flex:1"><b>${getP(l.id).name}</b><div class="small">${l.size} · ${UGX(linePrice(l))}</div></div></div>`).join("")}</div>`
     : `<div class="card mt16 center"><p>No saved items yet.</p></div>`;
 
+  html += `<h2 class="mt32">Wishlist ♥</h2>`;
+  html += wish.length
+    ? `<div class="grid mt16">${wish.map(pid => { const p = getP(pid); return p ? `<div class="cart-row"><img src="assets/img/products/${p.img}" alt=""><div style="flex:1"><b>${p.name}</b><div class="small">⭐ ${p.rating} (${p.reviews})</div></div><button class="btn btn-primary btn-sm" onclick="addToCart('${pid}','${p.sizes[0][0]}',1);location.href='cart.html'">Add to Cart</button></div>` : ""; }).join("")}</div>`
+    : `<div class="card mt16 center"><p>No favourites yet. Tap ♥ on any product.</p></div>`;
+
   html += `<h2 class="mt32">Account Details</h2>
   <div class="card mt16">
     <p class="small">Full customer accounts with order history, saved addresses and secure Pesapal payments are launching soon. For now, your orders are saved on this device and tracked via your order number on WhatsApp.</p>

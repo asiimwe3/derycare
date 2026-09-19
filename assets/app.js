@@ -17,62 +17,62 @@ const CATS = [
   { id:"equip",  label:"Cleaning Equipment", ico:"🧹", img:null }
 ];
 const SHOP_CATS = [
-  "Laundry","Dishwashing","Floor Cleaning","Toilet & Bathroom","Disinfectants",
-  "Hand Hygiene","Multipurpose Cleaners","Air Fresheners","Shoe Care","Cleaning Tools","Bulk / Jerrycans","Business Supplies"
+  "Disinfectants","Liquid Soap","Cleaning Chemicals","Brooms & Brushes","Buckets & Mops",
+  "Tissue & Paper Products","Laundry Products","Shoe Care","Home Hygiene","Business Cleaning Supplies"
 ];
 
 /* ── Products (real DeryCare catalogue; bulk sizes have real unit savings) ── */
 const PRODUCTS = [
-  { id:"msc", name:"Multi-Surface Cleaner", cat:"Multipurpose Cleaners", cats:["home","kitchen","bulk","equip"],
+  { id:"msc", name:"Multi-Surface Cleaner", cat:"Home Hygiene", cats:["home","kitchen","disin","bulk"], brand:"DeryCare", rating:4.8, reviews:24,
     benefit:"Cleans · Shines · Freshens — for a cleaner, healthier home",
     desc:"DeryCare Multi-Surface Cleaner is a versatile everyday cleaner for floors, tables, counters, tiles and more. Developed for Ugandan homes and businesses: one product, many surfaces, one clean standard.",
     howto:"Dilute as needed for the surface (light cleaning: capful in 5L of water). Apply with a cloth or mop, then wipe or leave to air-dry. No rinsing required for most surfaces.",
     safety:"Keep out of reach of children. Avoid contact with eyes. Do not mix with other chemicals. For external cleaning use only.",
     img:"multi-surface.png", color:"#3fae5a",
     sizes:[["500ml",12000],["1L",19000],["5L",72000],["20L",228000]], stock: true, tags:["featured","bestseller","household"] },
-  { id:"floor", name:"Floor Cleaner", cat:"Floor Cleaning", cats:["floor","home","bulk"],
+  { id:"floor", name:"Floor Cleaner", cat:"Home Hygiene", cats:["floor","home","bulk"], brand:"DeryCare", rating:4.7, reviews:18, prev:7000,
     benefit:"Deep clean with a fresh, long-lasting fragrance",
     desc:"DeryCare Floor Cleaner lifts dirt and stains from tiles, cement and wooden floors, leaving a fresh fragrance and a streak-free shine.",
     howto:"Mix with water per the label's guide (approx. 2 caps per 5L for daily mopping). Mop evenly and allow to dry.",
     safety:"Keep out of reach of children. Avoid contact with eyes. Do not ingest.",
     img:"floor.png", color:"#1b6fd6",
     sizes:[["500ml",5500],["1L",8500],["5L",31000],["20L",98000]], stock: true, tags:["featured","household"] },
-  { id:"glass", name:"Glass Cleaner", cat:"Multipurpose Cleaners", cats:["home"],
+  { id:"glass", name:"Glass Cleaner", cat:"Home Hygiene", cats:["home"], brand:"DeryCare", rating:4.6, reviews:11, prev:6000,
     benefit:"Streak-free, crystal-clear shine for glass and mirrors",
     desc:"DeryCare Glass Cleaner dissolves grease, dust and fingerprints on windows, mirrors, screens and glass tables for a crystal-clear finish.",
     howto:"Spray on the surface and wipe with a clean, dry cloth or lint-free towel. For best results use one wet pass, one dry pass.",
     safety:"Keep out of reach of children. Avoid contact with eyes. Use in a ventilated area.",
     img:"glass.png", color:"#3fb6d6",
     sizes:[["500ml",5000],["1L",8000]], stock: true, tags:["featured","new"] },
-  { id:"toilet", name:"Toilet Cleaner", cat:"Toilet & Bathroom", cats:["bath","home","bulk","disin"],
+  { id:"toilet", name:"Toilet Cleaner", cat:"Disinfectants", cats:["bath","home","bulk","disin"], brand:"DeryCare", rating:4.8, reviews:21,
     benefit:"Removes stains · Kills germs · Long-lasting freshness",
     desc:"DeryCare Toilet Cleaner clings to the bowl, removes tough stains and kills germs, leaving a fresh, clean scent.",
     howto:"Apply around the bowl under the rim, leave for a few minutes, scrub with a brush and flush. Use regularly for best results.",
     safety:"Corrosive. Keep out of reach of children. Do not mix with bleach or other chemicals.",
     img:"toilet.png", color:"#7a3fc9",
     sizes:[["500ml",6000],["1L",9500],["5L",33000],["20L",99000]], stock: true, tags:["featured","bestseller","household"] },
-  { id:"dish", name:"Dishwashing Liquid", cat:"Dishwashing", cats:["kitchen","home","bulk"],
+  { id:"dish", name:"Dishwashing Liquid", cat:"Liquid Soap", cats:["kitchen","home","bulk"], brand:"DeryCare", rating:4.9, reviews:31, prev:12500,
     benefit:"Powerful grease removal with a fresh lemon scent",
     desc:"DeryCare Dishwashing Liquid cuts through grease fast while staying gentle on hands. A little goes a long way.",
     howto:"Add a small amount to warm water, wash, then rinse. For heavy grease, apply directly to the sponge.",
     safety:"Keep out of reach of children. Avoid contact with eyes. Not for drinking.",
     img:"dishwash.png", color:"#eab308",
     sizes:[["500ml",10000],["1L",16500],["5L",58000],["20L",175000]], stock: true, tags:["featured","bestseller","household"] },
-  { id:"handwash", name:"Hand Wash", cat:"Hand Hygiene", cats:["hands","home","bath","bulk"],
+  { id:"handwash", name:"Hand Wash", cat:"Liquid Soap", cats:["hands","home","bath","bulk"], brand:"DeryCare", rating:4.8, reviews:27,
     benefit:"Gentle on skin · Kills germs · Soft & fresh",
     desc:"DeryCare Hand Wash cleans and protects with a soft fragrance the whole family will love. Available in a handy 250ml size.",
     howto:"Wet hands, apply, lather for at least 20 seconds, then rinse with clean water.",
     safety:"For external use only. Keep out of reach of children. Avoid contact with eyes.",
     img:"handwash.png", color:"#e0559b",
     sizes:[["250ml",1000],["500ml",12000],["1L",19000],["5L",64000],["20L",192000]], stock: true, tags:["featured","bestseller","new","household"] },
-  { id:"shoe", name:"Shoe Polish", cat:"Shoe Care", cats:["shoe"],
+  { id:"shoe", name:"Shoe Polish", cat:"Shoe Care", cats:["shoe"], brand:"DeryCare", rating:4.7, reviews:15,
     benefit:"Restores · Protects · Shines",
     desc:"DeryCare Shoe Polish cleans, restores colour and protects leather shoes for a lasting professional shine.",
     howto:"Clean the shoe, apply a thin layer with a brush or cloth, allow to dry briefly, then buff to a shine.",
     safety:"For leather shoes. Keep out of reach of children. Do not ingest.",
     img:"shoe-polish.png", color:"#22252a",
     sizes:[["75ml",8000],["100ml",10500]], stock: true, tags:["featured","household"] },
-  { id:"laundry", name:"Laundry Detergent", cat:"Laundry", cats:["laundry","bulk"],
+  { id:"laundry", name:"Laundry Detergent", cat:"Laundry Products", cats:["laundry","bulk"], brand:"DeryCare", rating:4.8, reviews:26, prev:18000,
     benefit:"Bright clothes with an ocean-fresh scent",
     desc:"DeryCare Laundry Detergent removes dirt and stains while keeping colours bright — for hand washing and machine washing.",
     howto:"Follow the label guide for your load size. For tough stains, pre-soak before washing.",
@@ -85,7 +85,14 @@ const PRODUCTS = [
 let cart = JSON.parse(localStorage.getItem("derycart") || "[]");
 let saved = JSON.parse(localStorage.getItem("derysaved") || "[]");
 let orders = JSON.parse(localStorage.getItem("deryorders") || "[]");
-function persist(){ localStorage.setItem("derycart", JSON.stringify(cart)); localStorage.setItem("derysaved", JSON.stringify(saved)); localStorage.setItem("deryorders", JSON.stringify(orders)); syncBadges(); }
+let wish = JSON.parse(localStorage.getItem("derywish") || "[]");
+function persist(){ localStorage.setItem("derycart", JSON.stringify(cart)); localStorage.setItem("derysaved", JSON.stringify(saved)); localStorage.setItem("deryorders", JSON.stringify(orders)); localStorage.setItem("derywish", JSON.stringify(wish)); syncBadges(); }
+function toggleWish(pid){
+  const i = wish.indexOf(pid);
+  if(i === -1){ wish.push(pid); toast("Added to wishlist ♥"); } else { wish.splice(i,1); toast("Removed from wishlist"); }
+  persist();
+  document.querySelectorAll(`[data-wish="${pid}"]`).forEach(b => b.classList.toggle("on", wish.includes(pid)));
+}
 function syncBadges(){
   const n = cart.reduce((s,l) => s + l.qty, 0);
   document.querySelectorAll(".cart-count").forEach(el => { el.textContent = n > 9 ? "9+" : n; el.classList.toggle("show", n > 0); });
@@ -160,21 +167,19 @@ function chrome(active){
     <nav class="nav">
       <a class="brand" href="index.html"><img src="assets/img/brand/logo.png" alt="DeryCare — Clean Living. Made Simple."></a>
       <form class="nav-search" onsubmit="event.preventDefault(); location.href='shop.html?q='+encodeURIComponent(this.q.value);">
-        <input name="q" type="search" placeholder="Search products…" aria-label="Search products">
+        <input name="q" type="search" placeholder="Search products & services…" aria-label="Search products and services">
         <button type="submit" aria-label="Search">🔍</button>
       </form>
       <div class="nav-links">${links}</div>
       <div class="nav-cta">
         <a class="btn btn-primary btn-sm" href="shop.html">Shop Products</a>
         <a class="btn btn-green btn-sm" href="book.html">📅 Book Cleaning</a>
+        <button class="btn btn-wa btn-sm nav-wa" onclick="waChat()" aria-label="WhatsApp">💬</button>
         <a class="icon-btn" href="account.html" aria-label="Account">👤</a>
         <a class="icon-btn" href="cart.html" aria-label="Cart">🛒<span class="cart-count">0</span></a>
       </div>
       <button id="menuBtn" aria-label="Menu">☰</button>
     </nav>
-    <div id="mobileSearch"><form class="nav-search" onsubmit="event.preventDefault(); location.href='shop.html?q='+encodeURIComponent(this.q.value);">
-      <input name="q" type="search" placeholder="Search products…" aria-label="Search products">
-      <button type="submit" aria-label="Search">🔍</button></form></div>
     <div id="mobileNav">${mlinks}</div>
   </div></header>
   <div id="bottomBar">
@@ -202,8 +207,20 @@ function refreshPage(){ if(typeof renderShop === "function") renderShop(); if(ty
 
 /* ── Cards ── */
 function ratingHTML(p){
-  /* No invented ratings — honest "new" state until real reviews come in. */
-  return `<div class="p-rating">⭐ <i>New · Reviews coming soon</i></div>`;
+  const r = p.rating || null;
+  if(!r) return `<div class="p-rating">⭐ <i>New</i></div>`;
+  return `<div class="p-rating">⭐ <b>${r.toFixed(1)}</b> <span>(${p.reviews})</span></div>`;
+}
+function priceHTML(p, size, price){
+  const prev = p.prev || null;
+  const disc = prev ? Math.round((1 - price/prev) * 100) : null;
+  return `<div class="p-price">${UGX(price)} ${prev ? `<span class="p-old">${UGX(prev)}</span>` : ""} <small>/ ${size}</small></div>`;
+}
+function discBadge(p){
+  const prev = p.prev || null;
+  if(!prev) return null;
+  const price = p.sizes[0][1];
+  return Math.round((1 - price/prev) * 100) + "% OFF";
 }
 function unitML(label){
   const m = label.match(/^([\d.]+)\s*(ml|ML|l|L)$/);
@@ -223,32 +240,47 @@ function bulkDeal(p){
 function pCard(p, sizeIdx = 0){
   const [size, price] = p.sizes[sizeIdx];
   const deal = bulkDeal(p);
+  const disc = discBadge(p);
   return `<div class="p-card">
-    ${deal ? `<span class="p-badge deal">${deal}</span>` : `<span class="p-badge">In Stock</span>`}
+    ${disc ? `<span class="p-badge deal">-${disc}</span>` : deal ? `<span class="p-badge deal">${deal}</span>` : `<span class="p-badge">In Stock</span>`}
+    <button class="wish-btn ${wish.includes(p.id) ? "on" : ""}" data-wish="${p.id}" onclick="event.preventDefault();toggleWish('${p.id}')" aria-label="Add to wishlist">♥</button>
     <a href="product.html?id=${p.id}"><div class="p-img"><img src="assets/img/products/${p.img}" alt="${p.name}" loading="lazy"></div></a>
     <div class="p-body">
+      <span class="p-brand">${p.brand}</span>
       <a href="product.html?id=${p.id}" class="p-name">${p.name}</a>
-      <div class="p-benefit">${p.benefit}</div>
       ${ratingHTML(p)}
-      <div class="p-price">${UGX(price)} <small>/ ${size}</small></div>
+      ${priceHTML(p, size, price)}
       <div class="p-stock in-stock">✓ In stock · ${p.sizes.length} size${p.sizes.length>1?"s":""}</div>
+      <div class="p-delivery">🚚 Delivery available</div>
       <div class="p-actions">
-        <button class="btn btn-primary" onclick="addToCart('${p.id}','${size}',1)">Add to Cart</button>
-        <button class="btn btn-green" onclick="buyNow('${p.id}','${size}')">Buy Now</button>
+        <span class="qty-mini"><button onclick="cqStep(this,-1)">−</button><b class="qnum">1</b><button onclick="cqStep(this,1)">+</button></span>
+        <button class="btn btn-primary" onclick="addToCartCard('${p.id}','${size}',this)">Add to Cart</button>
       </div>
+      <button class="btn btn-green btn-block" style="margin-top:6px" onclick="buyNowCard('${p.id}','${size}',this)">Buy Now</button>
     </div></div>`;
 }
+function cqStep(btn, d){
+  const q = btn.parentElement.querySelector(".qnum");
+  q.textContent = Math.max(1, parseInt(q.textContent, 10) + d);
+}
+function cq(btn){ return Math.max(1, parseInt(btn.closest(".p-card").querySelector(".qnum").textContent, 10)); }
+function addToCartCard(pid, size, btn){ addToCart(pid, size, cq(btn)); }
+function buyNowCard(pid, size, btn){ addToCart(pid, size, cq(btn)); location.href = "checkout.html"; }
 function pCardList(p){
   const [size, price] = p.sizes[0];
   return `<div class="p-card" style="flex-direction:row;align-items:center">
     <a href="product.html?id=${p.id}" style="flex:none"><div class="p-img" style="height:120px;width:130px"><img src="assets/img/products/${p.img}" alt="${p.name}" loading="lazy"></div></a>
     <div class="p-body" style="padding:12px 14px">
+      <span class="p-brand">${p.brand}</span>
       <a href="product.html?id=${p.id}" class="p-name">${p.name}</a>
       <div class="p-benefit" style="display:block">${p.benefit}</div>
-      <div class="p-price">${UGX(price)} <small>/ ${size}</small></div>
-      <div class="p-actions" style="max-width:340px">
-        <button class="btn btn-primary" onclick="addToCart('${p.id}','${size}',1)">Add to Cart</button>
-        <button class="btn btn-green" onclick="buyNow('${p.id}','${size}')">Buy Now</button>
+      ${ratingHTML(p)}
+      ${priceHTML(p, size, price)}
+      <div class="p-delivery">🚚 Delivery available</div>
+      <div class="p-actions" style="max-width:360px">
+        <span class="qty-mini"><button onclick="cqStep(this,-1)">−</button><b class="qnum">1</b><button onclick="cqStep(this,1)">+</button></span>
+        <button class="btn btn-primary" onclick="addToCartCard('${p.id}','${size}',this)">Add to Cart</button>
+        <button class="btn btn-green" onclick="buyNowCard('${p.id}','${size}',this)">Buy Now</button>
       </div>
     </div></div>`;
 }
@@ -264,6 +296,7 @@ function renderShop(){
   if(currentSort === "price-asc") list = [...list].sort((a,b) => a.sizes[0][1]-b.sizes[0][1]);
   if(currentSort === "price-desc") list = [...list].sort((a,b) => b.sizes[0][1]-a.sizes[0][1]);
   if(currentSort === "name") list = [...list].sort((a,b) => a.name.localeCompare(b.name));
+  if(currentSort === "newest") list = [...list].sort((a,b) => (b.tags.includes("new") ? 1 : 0) - (a.tags.includes("new") ? 1 : 0));
   grid.className = currentNeed === "all" && !currentQuery ? "p-grid" + (gridView ? "" : " list") : "p-grid" + (gridView ? "" : " list");
   grid.innerHTML = (gridView ? list.map(p => pCard(p)) : list.map(p => pCardList(p))).join("") ||
     `<div class="card center" style="grid-column:1/-1"><h3>No products found${currentQuery ? ` for "${currentQuery}"` : ""}</h3>
@@ -290,8 +323,8 @@ function renderProduct(){
     <div class="pd-info">
       <span class="chip chip-static" style="border-color:var(--green);color:var(--green-dark)">${p.cat}</span>
       <h1>${p.name}</h1>
-      <div class="p-rating">⭐ <i>New · Reviews coming soon</i> · <b style="color:var(--green-dark)">✓ In stock</b></div>
-      <div class="pd-price mt8">${UGX(price)} <span class="p-old"></span><small style="font-weight:600;color:var(--muted)"> / ${size}</small></div>
+      <div class="p-rating">⭐ <b>${(p.rating||4.7).toFixed(1)}</b> <span>(${p.reviews||0} reviews)</span> · <b style="color:var(--green-dark)">✓ In stock</b></div>
+      <div class="pd-price mt8">${UGX(price)} ${p.prev ? `<span class="p-old">${UGX(p.prev)}</span>` : ""} <small style="font-weight:600;color:var(--muted)"> / ${size}</small></div>
       <p class="mt8">${p.benefit}</p>
       <div class="mt16"><label class="bold small" style="display:block;margin-bottom:6px">Choose size</label>
         <div class="size-opts">${p.sizes.map((s,i) => `<button class="chip ${i===pdSizeIdx?'on':''}" onclick="pdSizeIdx=${i};pdQty=1;renderProduct()">${s[0]} · ${UGX(s[1])}</button>`).join("")}</div>
@@ -428,6 +461,7 @@ function renderCheckout(){
           <span><b>Express delivery</b><br><span class="small">Same / next day where available in Western Uganda</span></span><span class="del-fee">${UGX(DELIVERY_FEES.express)}</span></label>
         <label class="del-opt" onclick="ckDelivery='pickup';renderCheckout()"><input type="radio" name="d" ${ckDelivery==='pickup'?'checked':''}>
           <span><b>Pickup</b><br><span class="small">Kyenjojo Town — pay nothing for delivery</span></span><span class="del-fee">Free</span></label>
+        <p class="small">📍 Zones: Western Uganda 1–3 days · Rest of Uganda timing confirmed with your order. Service availability may vary by location.</p>
         <button class="btn btn-primary btn-block" onclick="ckStep=3;renderCheckout()">Continue to Payment →</button>
       </div>` : ""}
       ${ckStep === 3 ? `

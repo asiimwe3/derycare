@@ -288,3 +288,16 @@ footer{background:var(--ink);color:#c8d2e0;margin-top:40px;padding:38px 0 96px}
 .status-step::after{content:"";position:absolute;top:11px;left:50%;width:100%;height:2px;background:var(--line);z-index:-1}
 .status-step:last-child::after{display:none}
 .status-step.done::after,.status-step.current::after{background:var(--green)}
+
+/* ── Marketplace card extras ── */
+.p-brand{font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.p-delivery{font-size:.72rem;color:var(--green-dark);font-weight:600}
+.p-old{display:inline}
+.wish-btn{position:absolute;top:8px;right:8px;z-index:3;border:0;background:rgba(255,255,255,.92);width:34px;height:34px;border-radius:50%;font-size:1rem;color:#c2c9d4;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.wish-btn.on{color:var(--danger)}
+.qty-mini{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+.qty-mini button{border:0;background:#fff;width:28px;height:34px;font-size:.95rem;cursor:pointer}
+.qty-mini b{width:26px;text-align:center;font-size:.85rem}
+.p-actions{grid-template-columns:auto 1fr}
+@media(max-width:1020px){.nav-cta .nav-wa{display:inline-flex}}
+@media(min-width:1021px){.nav-wa{display:none}}

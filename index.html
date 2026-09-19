@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeryCare — Western Uganda's Cleaning & Hygiene Company</title>
-<meta name="description" content="Professional cleaning in Western Uganda. Quality cleaning products delivered across Uganda. Based in Kyenjojo. Clean Living. Made Simple.">
+<title>DeryCare | Cleaning Services Western Uganda — Cleaning & Hygiene Products Delivered Across Uganda</title>
+<meta name="description" content="Western Uganda's cleaning & hygiene company. Professional cleaning in Kyenjojo, Fort Portal & across Western Uganda — home, office, carpet, sofa, shoe cleaning. Quality cleaning products delivered Uganda-wide.">
+<meta name="keywords" content="cleaning services Western Uganda, cleaning company Kyenjojo, cleaning services Fort Portal, home cleaning Uganda, office cleaning Western Uganda, carpet cleaning Uganda, sofa cleaning Uganda, shoe cleaning Uganda, cleaning products Uganda, cleaning supplies Uganda, hygiene products Uganda">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -15,7 +16,7 @@
     <div>
       <span class="eyebrow">Western Uganda's Cleaning &amp; Hygiene Company</span>
       <h1>A Cleaner <span>Western Uganda</span> Starts Here.</h1>
-      <p class="lead">Professional cleaning services for homes and businesses, plus quality cleaning products delivered across Uganda.</p>
+      <p class="lead">Professional cleaning for homes and businesses, plus quality cleaning products delivered across Uganda.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="book.html">📅 Book Cleaning</a>
         <a class="btn btn-green" href="shop.html">🛒 Shop Products</a>
@@ -23,148 +24,113 @@
       <div class="hero-badges">
         <span class="hero-badge">🧹 Services: Western Uganda</span>
         <span class="hero-badge">🚚 Delivery: Uganda-wide</span>
-        <span class="hero-badge">💬 WhatsApp support</span>
+        <span class="hero-badge">🔒 Secure payments</span>
       </div>
     </div>
-    <div class="hero-img"><img src="assets/img/hero.png" alt="A clean, bright Ugandan home" loading="eager"></div>
+    <div class="hero-img"><img src="assets/img/hero.png" alt="Professional cleaning for a bright Ugandan home" loading="eager"></div>
   </div>
 </div>
 
-<!-- POPULAR CATEGORIES -->
-<section id="cats">
+<!-- SERVICES -->
+<section id="services">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Popular Categories</h2>
-      <a class="link" href="shop.html">Shop all products →</a>
+      <div>
+        <h2>Professional Cleaning Services</h2>
+        <p class="small">Reliable cleaning services for homes, businesses and everyday spaces across Western Uganda.</p>
+      </div>
+      <a class="link" href="services.html">All services →</a>
     </div>
-    <div class="cat-grid">
-      <a class="cat-card" href="shop.html?need=home"><span class="cat-ico">🏠</span><b>Home Cleaning</b></a>
-      <a class="cat-card" href="shop.html?need=laundry"><span class="cat-ico">👕</span><b>Laundry</b></a>
-      <a class="cat-card" href="shop.html?need=shoe"><span class="cat-ico">👟</span><b>Shoe Care</b></a>
-      <a class="cat-card" href="shop.html?need=floor"><span class="cat-ico">🧼</span><b>Floor Care</b></a>
-      <a class="cat-card" href="shop.html?need=bath"><span class="cat-ico">🚿</span><b>Bathroom Care</b></a>
-      <a class="cat-card" href="shop.html?need=kitchen"><span class="cat-ico">🍽️</span><b>Kitchen Care</b></a>
-      <a class="cat-card" href="shop.html?need=disin"><span class="cat-ico">🧪</span><b>Disinfectants</b></a>
-      <a class="cat-card" href="shop.html?need=hands"><span class="cat-ico">🧼</span><b>Hand Hygiene</b></a>
-      <a class="cat-card" href="shop.html?need=bulk"><span class="cat-ico">🛢️</span><b>Bulk Products</b></a>
-      <a class="cat-card" href="javascript:waBulk()"><span class="cat-ico">🧹</span><b>Cleaning Equipment</b></a>
-    </div>
+    <div class="grid g4" id="svcGrid"></div>
+    <p class="small center mt16">Service availability may vary by location.</p>
   </div>
 </section>
 
-<!-- FEATURED PRODUCTS -->
-<section class="section-alt">
+<!-- SHOP -->
+<section class="section-alt" id="shop">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Featured Products</h2>
-      <a class="link" href="shop.html">See all →</a>
+      <div>
+        <h2>Shop Cleaning &amp; Hygiene Products</h2>
+        <p class="small">Quality DeryCare products with clear prices — delivered across Uganda.</p>
+      </div>
+      <a class="link" href="shop.html">Visit the shop →</a>
     </div>
-    <div class="hscroll" id="featuredGrid"></div>
-    <p class="small center mt16">💡 Best value: 5L and 20L sizes save you money per litre — built for families and businesses.</p>
+    <div class="chips" id="homeCats"></div>
+    <div class="p-grid mt24" id="featuredGrid"></div>
+    <div class="center mt24"><a class="btn btn-primary" href="shop.html">Shop All Products</a></div>
   </div>
 </section>
 
-<!-- DEALS -->
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>⚡ Bulk Deals</h2>
-      <a class="link" href="shop.html?need=bulk">All bulk sizes →</a>
-    </div>
-    <div class="p-grid" id="dealsGrid"></div>
-  </div>
-</section>
-
-<!-- WESTERN UGANDA SERVICES -->
-<section class="section-alt" id="services">
+<!-- WESTERN UGANDA -->
+<section id="coverage">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow" style="display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);background:#fff;border:1.5px solid #d7e4f6;padding:6px 14px;border-radius:999px">Cleaning Services</span>
-      <h2 class="mt8">Professional Cleaning Across Western Uganda</h2>
-      <p class="lead center" style="margin:10px auto 0">Trained, vetted cleaners for homes, offices, schools and hotels — based in Kyenjojo, at the heart of the region.</p>
+      <h2>Serving Western Uganda</h2>
+      <p class="lead center" style="margin:10px auto 0">Based in Kyenjojo — our cleaning teams reach towns and villages across the region. Products ship nationwide.</p>
     </div>
     <div class="map-frame mt24">
-      <iframe title="DeryCare service area — Kyenjojo, Western Uganda"
+      <iframe title="DeryCare service area — Western Uganda"
         src="https://www.openstreetmap.org/export/embed.html?bbox=29.55%2C-1.15%2C31.35%2C1.15&amp;layer=mapnik&amp;marker=0.6372%2C30.6440"
         loading="lazy"></iframe>
     </div>
     <p class="small center mt16" style="margin-bottom:0">📍 Our base: Kyenjojo Town, Kyenjojo District, Western Uganda</p>
     <div class="chips map-towns mt24" style="justify-content:center">
       <span class="chip chip-static">Kyenjojo</span><span class="chip chip-static">Fort Portal</span>
-      <span class="chip chip-static">Kasese</span><span class="chip chip-static">Hoima</span>
-      <span class="chip chip-static">Kibaale</span><span class="chip chip-static">Kagadi</span>
-      <span class="chip chip-static">Bundibugyo</span><span class="chip chip-static">Mbarara</span>
-      <span class="chip chip-static">Kabale</span><span class="chip chip-static">Kabarole</span>
-      <span class="chip chip-static">Kamwenge</span><span class="chip chip-static">Kyegegwa</span>
+      <span class="chip chip-static">Kasese</span><span class="chip chip-static">Kamwenge</span>
+      <span class="chip chip-static">Kabarole</span><span class="chip chip-static">Bunyangabu</span>
+      <span class="chip chip-static">Bundibugyo</span><span class="chip chip-static">Ntoroko</span>
+      <span class="chip chip-static">Hoima</span><span class="chip chip-static">Kibaale</span>
+      <span class="chip chip-static">Kagadi</span><span class="chip chip-static">Kakumiro</span>
+      <span class="chip chip-static">Kabale</span><span class="chip chip-static">Mbarara</span>
+      <span class="chip chip-static">Bushenyi</span><span class="chip chip-static">+ surrounding areas</span>
     </div>
-    <div class="center mt24">
+    <p class="small center mt16">Cleaning services: Western Uganda · Product delivery: Uganda-wide · Service availability may vary by location.</p>
+    <div class="center mt16">
       <a class="btn btn-primary" href="book.html">📅 Book a Cleaning Service</a>
+      <a class="btn btn-green" href="shop.html" style="margin-left:8px">🛒 Shop &amp; Get Delivered</a>
     </div>
   </div>
 </section>
 
-<!-- NATIONWIDE DELIVERY -->
-<section>
-  <div class="wrap center">
-    <span class="eyebrow" style="display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);background:var(--blue-soft);padding:6px 14px;border-radius:999px">Product Delivery</span>
-    <h2 class="mt8">Need DeryCare Products Anywhere in Uganda?</h2>
-    <p class="lead center" style="margin:10px auto 0">We deliver quality cleaning products across the country — from Kyenjojo to your doorstep.</p>
-    <div class="chips mt24" style="justify-content:center">
-      <span class="chip chip-static">📍 Kampala</span><span class="chip chip-static">📍 Entebbe</span>
-      <span class="chip chip-static">📍 Jinja</span><span class="chip chip-static">📍 Mbarara</span>
-      <span class="chip chip-static">📍 Fort Portal</span><span class="chip chip-static">📍 Hoima</span>
-      <span class="chip chip-static">📍 Gulu</span><span class="chip chip-static">📍 Mbale</span>
-      <span class="chip chip-static">📍 All Uganda locations</span>
-    </div>
-    <div class="mt24"><a class="btn btn-green" href="shop.html">🛒 Shop &amp; Get Delivered</a></div>
-  </div>
-</section>
-
-<!-- SERVICES QUICK CARDS -->
+<!-- HOW IT WORKS -->
 <section class="section-alt">
   <div class="wrap">
-    <div class="sec-head"><h2>Cleaning Services</h2><a class="link" href="services.html">All services →</a></div>
-    <div class="grid g4">
-      <a class="card" href="book.html" style="display:block;color:var(--ink)"><h3>🏠 Home Cleaning</h3><p>Regular or one-off cleaning for your living spaces.</p></a>
-      <a class="card" href="book.html" style="display:block;color:var(--ink)"><h3>🧽 Deep Cleaning</h3><p>Top-to-bottom intensive cleaning.</p></a>
-      <a class="card" href="business.html" style="display:block;color:var(--ink)"><h3>🏢 Office Cleaning</h3><p>Reliable scheduled cleaning for workspaces.</p></a>
-      <a class="card" href="book.html" style="display:block;color:var(--ink)"><h3>👕 Laundry</h3><p>Wash, dry, iron — collected and returned.</p></a>
-      <a class="card" href="book.html" style="display:block;color:var(--ink)"><h3>👟 Shoe Cleaning</h3><p>Clean, polish and protect your shoes.</p></a>
-      <a class="card" href="business.html" style="display:block;color:var(--ink)"><h3>🏫 Schools &amp; Hotels</h3><p>Institutional cleaning contracts.</p></a>
-      <a class="card" href="business.html" style="display:block;color:var(--ink)"><h3>🛢️ Bulk Supply</h3><p>Wholesale products for organizations.</p></a>
-      <a class="card" href="book.html" style="display:block;color:var(--ink)"><h3>🔁 Recurring Plans</h3><p>Weekly &amp; monthly cleaning plans.</p></a>
+    <div class="center"><h2>How It Works</h2></div>
+    <div class="grid g5 mt24" style="grid-template-columns:repeat(5,1fr)">
+      <div class="card center"><div style="font-size:1.6rem">🧹</div><h3>1. Choose</h3><p class="small">Pick a cleaning service or product.</p></div>
+      <div class="card center"><div style="font-size:1.6rem">🛒</div><h3>2. Book / Cart</h3><p class="small">Book a service or add to cart.</p></div>
+      <div class="card center"><div style="font-size:1.6rem">📍</div><h3>3. Location</h3><p class="small">Select your delivery area.</p></div>
+      <div class="card center"><div style="font-size:1.6rem">🔒</div><h3>4. Pay Securely</h3><p class="small">Confirm and pay — securely.</p></div>
+      <div class="card center"><div style="font-size:1.6rem">🚚</div><h3>5. Done</h3><p class="small">DeryCare delivers or sends a cleaning team.</p></div>
     </div>
   </div>
 </section>
 
-<!-- WHY DERYCARE -->
+<!-- TRUST -->
 <section id="why">
   <div class="wrap">
     <div class="center"><h2>Why Choose DeryCare?</h2></div>
     <div class="trust-grid mt24">
-      <div class="trust"><span class="t-ico">📍</span><div><b>Western Uganda focused</b><p>Based in Kyenjojo, serving the heart of the region.</p></div></div>
-      <div class="trust"><span class="t-ico">🏅</span><div><b>Quality cleaning products</b><p>Consistent standards in every bottle.</p></div></div>
-      <div class="trust"><span class="t-ico">🧹</span><div><b>Professional cleaning services</b><p>Trained, vetted cleaning teams.</p></div></div>
-      <div class="trust"><span class="t-ico">🚚</span><div><b>Nationwide product delivery</b><p>Products delivered anywhere in Uganda.</p></div></div>
-      <div class="trust"><span class="t-ico">📱</span><div><b>Convenient online ordering</b><p>Shop and order from your phone in minutes.</p></div></div>
-      <div class="trust"><span class="t-ico">🔒</span><div><b>Secure Pesapal payments</b><p>Online payments (launching soon) with verified status.</p></div></div>
-      <div class="trust"><span class="t-ico">💬</span><div><b>WhatsApp customer support</b><p>Real answers from the DeryCare team.</p></div></div>
-      <div class="trust"><span class="t-ico">🛢️</span><div><b>Bulk supply available</b><p>5L &amp; 20L sizes with real per-litre savings.</p></div></div>
-      <div class="trust"><span class="t-ico">🔁</span><div><b>Recurring cleaning services</b><p>Weekly and monthly plans for homes &amp; businesses.</p></div></div>
+      <div class="trust"><span class="t-ico">🧹</span><div><b>Professional Cleaners</b><p>Trained, vetted cleaning teams.</p></div></div>
+      <div class="trust"><span class="t-ico">🏅</span><div><b>Quality Products</b><p>Consistent standards in every bottle.</p></div></div>
+      <div class="trust"><span class="t-ico">📍</span><div><b>Western Uganda Focus</b><p>Based in Kyenjojo, serving the region.</p></div></div>
+      <div class="trust"><span class="t-ico">🚚</span><div><b>Uganda-wide Product Delivery</b><p>Products delivered anywhere in Uganda.</p></div></div>
+      <div class="trust"><span class="t-ico">📱</span><div><b>Easy Online Booking</b><p>Book cleaning in under a minute.</p></div></div>
+      <div class="trust"><span class="t-ico">🔒</span><div><b>Secure Payments</b><p>Verified, secure payment options.</p></div></div>
+      <div class="trust"><span class="t-ico">💬</span><div><b>WhatsApp Support</b><p>Real answers from the DeryCare team.</p></div></div>
+      <div class="trust"><span class="t-ico">🤝</span><div><b>Reliable Customer Service</b><p>We follow through, every order.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!-- WHATSAPP CTA -->
 <section class="section-alt">
   <div class="wrap">
     <div class="final-cta">
-      <h2>Local Roots. Professional Cleaning. Nationwide Delivery.</h2>
-      <p>Shop DeryCare products or book a professional cleaning today.</p>
-      <div class="mt24" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-amber" href="shop.html">🛒 SHOP PRODUCTS</a>
-        <a class="btn btn-ghost" href="book.html">📅 BOOK A CLEANING</a>
-      </div>
+      <h2>Need help choosing a product or booking cleaning?</h2>
+      <p>Chat with DeryCare on WhatsApp — we answer fast.</p>
+      <div class="mt24"><button class="btn btn-wa" onclick="waChat()">💬 Chat with DeryCare on WhatsApp</button></div>
     </div>
   </div>
 </section>
@@ -175,23 +141,31 @@
       <div style="background:#fff;display:inline-block;padding:8px 14px;border-radius:12px"><img src="assets/img/brand/logo.png" alt="DeryCare" style="height:38px;display:block"></div>
       <p class="f-tag mt16">Clean Living. Made Simple.</p>
       <a class="btn btn-wa btn-sm" href="javascript:waChat()">💬 WhatsApp Us</a>
+      <p class="small mt16" style="color:#8fa0b8">Follow DeryCare</p>
+      <div style="display:flex;gap:8px;margin-top:6px">
+        <a class="icon-btn" href="https://facebook.com" aria-label="Facebook">📘</a>
+        <a class="icon-btn" href="https://instagram.com" aria-label="Instagram">📸</a>
+        <a class="icon-btn" href="https://tiktok.com" aria-label="TikTok">🎵</a>
+        <a class="icon-btn" href="https://x.com" aria-label="X">✖️</a>
+      </div>
     </div>
     <div><h4>Shop</h4>
-      <a href="shop.html">All Products</a><a href="shop.html?need=bulk">Bulk &amp; Jerrycans</a>
-      <a href="shop.html?need=laundry">Laundry</a><a href="shop.html?need=shoe">Shoe Care</a></div>
-    <div><h4>Services</h4>
-      <a href="services.html">Home Cleaning</a><a href="business.html">Business Cleaning</a>
-      <a href="book.html">Book a Cleaning</a></div>
+      <a href="shop.html">Shop Products</a><a href="shop.html?need=bulk">Bulk &amp; Jerrycans</a>
+      <a href="refill.html">Refills</a><a href="delivery.html">Delivery Information</a>
+      <a href="returns.html">Returns &amp; Refunds</a></div>
+    <div><h4>Cleaning Services</h4>
+      <a href="services.html">All Services</a><a href="book.html">Book a Cleaning</a>
+      <a href="business.html">Business Cleaning</a></div>
     <div><h4>Company</h4>
-      <a href="about.html">About</a><a href="impact.html">Impact</a><a href="contact.html">Contact</a><a href="account.html">My Account</a></div>
-    <div><h4>Help</h4>
-      <a href="delivery.html">Delivery</a><a href="returns.html">Returns</a>
-      <a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a>
+      <a href="about.html">About DeryCare</a><a href="impact.html">Impact</a>
+      <a href="contact.html">Contact Us</a><a href="account.html">My Account</a></div>
+    <div><h4>Legal</h4>
+      <a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a>
       <a href="contact.html#faq">FAQ</a></div>
   </div>
   <div class="f-coverage mt24">
-    🧹 <b>Cleaning Services:</b> Western Uganda — Kyenjojo, Fort Portal, Kasese, Hoima, Kibaale, Kagadi, Bundibugyo, Mbarara, Kabale and surrounding districts.<br>
-    🚚 <b>Product Delivery:</b> Uganda-wide — Kampala, Entebbe, Jinja, Mbarara, Fort Portal, Hoima, Gulu, Mbale and beyond.
+    🧹 <b>Cleaning Services:</b> Western Uganda — Kyenjojo, Fort Portal, Kasese, Kamwenge, Kabarole, Bunyangabu, Bundibugyo, Ntoroko, Hoima, Kibaale, Kagadi, Kakumiro, Kabale, Mbarara, Bushenyi and surrounding areas.<br>
+    🚚 <b>Product Delivery:</b> Uganda-wide.
   </div>
   <div class="f-powered">
     <span>© 2026 DeryCare. All rights reserved.</span>
@@ -201,8 +175,32 @@
 <script src="assets/app.js"></script>
 <script>
   chrome("index.html");
+  const SERVICES = [
+    ["🏠","Home Cleaning","Everyday cleaning for your living spaces."],
+    ["🏢","Office & Business Cleaning","Reliable scheduled cleaning for workspaces."],
+    ["🛋️","Sofa & Upholstery Cleaning","Deep clean for sofas and fabric."],
+    ["🧺","Clothes Washing","Wash, dry, fold — collected and returned."],
+    ["👟","Shoe Cleaning","Clean, refresh and deodorise."],
+    ["✨","Shoe Polishing","Colour restoration and lasting shine."],
+    ["🛏️","Mattress Cleaning","Fresh, sanitised mattresses."],
+    ["🧹","Carpet Cleaning","Dirt and stains lifted out."],
+    ["🪟","Window Cleaning","Streak-free, inside and out."],
+    ["🚗","Car Interior Cleaning","Fresh, tidy, dust-free interiors."],
+    ["🏠","Move-in / Move-out Cleaning","Handover-ready deep cleans."],
+    ["🧼","Deep Cleaning","Top-to-bottom intensive cleaning."]
+  ];
+  $("svcGrid").innerHTML = SERVICES.map(([ico,name,desc]) =>
+    `<div class="card">
+      <div style="font-size:1.8rem">${ico}</div>
+      <h3 class="mt8">${name}</h3><p>${desc}</p>
+      <p class="small mt8" style="color:var(--blue)"><b>Get Quote</b></p>
+      <a class="btn btn-primary btn-sm btn-block mt8" href="services.html#book">Book Service</a>
+    </div>`).join("");
+
+  $("homeCats").innerHTML = SHOP_CATS.map(c =>
+    `<a class="chip" href="shop.html?need=${encodeURIComponent(c)}">${c}</a>`).join("");
+
   $("featuredGrid").innerHTML = PRODUCTS.filter(p => p.tags.includes("featured")).map(p => pCard(p)).join("");
-  $("dealsGrid").innerHTML = PRODUCTS.filter(p => p.sizes.length >= 4).slice(0, 4).map(p => pCard(p)).join("");
 </script>
 </body>
 </html>
