@@ -9,7 +9,7 @@ const PRODUCTS = [
   { id:"glass",   name:"Glass Cleaner",         benefit:"Streak-free, crystal clear shine",                          img:"glass.png",         color:"#3fb6d6", need:["home","business"],                          sizes:[["500ml",5000],["1L",8000]] },
   { id:"toilet",  name:"Toilet Cleaner",        benefit:"Removes stains · Kills germs · Long-lasting freshness",     img:"toilet.png",        color:"#7a3fc9", need:["bathroom","home","business","institution"], sizes:[["500ml",6000],["1L",9500],["5L",33000],["20L",99000]] },
   { id:"dish",    name:"Dishwashing Liquid",    benefit:"Powerful grease removal, lemon fresh",                      img:"dishwash.png",      color:"#eab308", need:["kitchen","home","business"],                sizes:[["500ml",10000],["1L",16500],["5L",58000],["20L",175000]] },
-  { id:"handwash",name:"Hand Wash",             benefit:"Gentle on skin · Kills germs · Soft & fresh",               img:"handwash.png",      color:"#e0559b", need:["home","business","institution","bathroom"], sizes:[["500ml",12000],["1L",19000],["5L",64000],["20L",192000]] },
+  { id:"handwash",name:"Hand Wash",             benefit:"Gentle on skin · Kills germs · Soft & fresh",               img:"handwash.png",      color:"#e0559b", need:["home","business","institution","bathroom"], sizes:[["250ml",1000],["500ml",12000],["1L",19000],["5L",64000],["20L",192000]] },
   { id:"shoe",    name:"Shoe Polish",           benefit:"Restores · Protects · Shines",                              img:"shoe-polish.png",   color:"#22252a", need:["shoes"],                                    sizes:[["75ml",8000],["100ml",10500]] },
   { id:"laundry", name:"Laundry Detergent",     benefit:"Bright clothes, ocean-fresh scent",                         img:"laundry.png",       color:"#2f6fd0", need:["clothes","laundry","institution"],          sizes:[["1L",15000],["5L",60000],["20L",198000]] }
 ];
@@ -95,7 +95,8 @@ function chrome(active){
     <div id="mobileNav">${mlinks}</div>
   </div></header>
   <div id="bottomBar">
-    <a href="shop.html" class="bb-shop"><span class="bb-ico">🛒</span>Shop</a>
+    <a href="shop.html" class="bb-shop"><span class="bb-ico">🧴</span>Products</a>
+    <a href="services.html" class="bb-serv"><span class="bb-ico">🧹</span>Services</a>
     <a href="book.html" class="bb-book"><span class="bb-ico">📅</span>Book</a>
     <a href="javascript:waChat()" class="bb-wa"><span class="bb-ico">💬</span>WhatsApp</a>
   </div>

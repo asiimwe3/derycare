@@ -63,7 +63,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdro
 }
 
 /* Mobile bottom action bar */
-#bottomBar{position:fixed;bottom:0;left:0;right:0;z-index:70;display:grid;grid-template-columns:1fr 1fr 1fr;background:#fff;border-top:1px solid var(--line)}
+#bottomBar{position:fixed;bottom:0;left:0;right:0;z-index:70;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;background:#fff;border-top:1px solid var(--line)}
 #bottomBar a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 4px;font-size:.72rem;font-weight:700;color:var(--ink)}
 #bottomBar .bb-wa{color:var(--green)}
 #bottomBar .bb-shop{color:var(--teal)}
@@ -186,3 +186,8 @@ footer h4{color:#fff;margin-bottom:14px}
 .nav-links{margin-left:0}
 .btn-green{background:#3fae5a;color:#fff}
 @media(max-width:1020px){.nav-search{display:none}}
+
+.map-frame{border:1.5px solid #e3e8ef;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);line-height:0}
+.map-frame iframe{width:100%;height:380px;border:0}
+.map-towns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+@media(max-width:720px){.map-frame iframe{height:280px}}
