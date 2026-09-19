@@ -177,6 +177,17 @@
     m += `\nProperty: ${$("bkProperty").value}\nSize: ${v("bkSize") || "-"}\nFrequency: ${$("bkFreq").value}`;
     m += `\nPreferred date: ${v("bkDate") || "flexible"} (${$("bkTime").value})`;
     if(v("bkNotes")) m += `\nNotes: ${v("bkNotes")}`;
+    const bkNo = "DC-B" + Date.now().toString().slice(-6);
+    sbInsert("bookings", {
+      booking_no: bkNo,
+      service: $("bkService").value,
+      customer_name: name,
+      phone: v("bkPhone") || "",
+      location: loc,
+      preferred_date: v("bkDate") || null,
+      notes: ($("bkProperty").value + "; size: " + (v("bkSize") || "-") + "; frequency: " + $("bkFreq").value +
+        "; time: " + $("bkTime").value + (v("bkNotes") ? "; notes: " + v("bkNotes") : "")).slice(0, 480)
+    });
     waMsg(m);
   }
 </script>

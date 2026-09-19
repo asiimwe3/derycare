@@ -3,6 +3,27 @@ const WA = "256762306675";
 const UGX = n => "UGX " + n.toLocaleString("en-UG");
 const $ = id => document.getElementById(id);
 
+/* ── Supabase backend (orders & bookings persist server-side) ── */
+const SB_URL = "https://upjmzobjnpeldiubuopk.supabase.co";
+const SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVwam16b2JqbnBlbGRpdWJ1b3BrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4MTMwNjEsImV4cCI6MjEwNTM4OTA2MX0.cQKK57xjI8F0I-gc_SQzT40bZx90m87Iew_wmUDkZfc";
+async function sbInsert(table, row){
+  try{
+    const r = await fetch(SB_URL + "/rest/v1/" + table, {
+      method: "POST",
+      headers: {
+        "apikey": SB_ANON,
+        "Authorization": "Bearer " + SB_ANON,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify(row)
+    });
+    if(!r.ok){ console.warn("Supabase insert failed:", r.status, await r.text()); return false; }
+    console.info("Saved to DeryCare backend:", table);
+    return true;
+  }catch(e){ console.warn("Backend unreachable; order continues via WhatsApp"); return false; }
+}
+
 /* ── Categories ── */
 const CATS = [
   { id:"home",   label:"Home Cleaning", ico:"🏠", img:"multi-surface.png" },
@@ -501,6 +522,21 @@ function ckPlace(){
     name: $("ckName")?.value || "", items: cart.map(l => ({ ...l })), subtotal: cartTotal(), delivery: ckDelivery, fee: ckFee(), total: cartTotal() + ckFee()
   };
   orders.unshift(order); persist();
+  sbInsert("orders", {
+    order_no: num,
+    customer_name: ($("ckName")?.value || "").trim(),
+    phone: ($("ckPhone")?.value || "").trim(),
+    email: ($("ckEmail")?.value || "").trim() || null,
+    address: (($("ckAddr")?.value || "") + ", " + ($("ckTown")?.value || "") + " — " + ($("ckDistrict")?.value || "")).trim(),
+    zone: ($("ckDistrict")?.value || ($("ckTown")?.value || "")).trim() || null,
+    notes: ($("ckNotes")?.value || "").trim() || null,
+    items: cart.map(l => ({ product: getP(l.id)?.name, size: l.size, qty: l.qty, unit_price: linePrice(l) })),
+    subtotal: cartTotal(),
+    delivery_fee: ckFee(),
+    total: order.total,
+    status: "pending",
+    source: "website"
+  });
   let m = `Hello DeryCare! New order ${num}\n\n`;
   cart.forEach(l => m += `• ${getP(l.id).name} (${l.size}) x${l.qty} — ${UGX(linePrice(l)*l.qty)}\n`);
   m += `\nSubtotal: ${UGX(cartTotal())}\nDelivery (${ckDelivery}): ${ckFee() ? UGX(ckFee()) : "Free"}\nTotal: ${UGX(order.total)}`;
